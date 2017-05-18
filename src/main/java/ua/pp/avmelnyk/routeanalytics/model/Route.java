@@ -1,21 +1,36 @@
 package ua.pp.avmelnyk.routeanalytics.model;
-
+import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-import java.util.ArrayList;
+;
 
 @Entity
 @Table(name = ("ROUTES"))
 public class Route {
     @Id
-    @Column(name = "ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
+    @Column(name = ("ID"))
     private int id;
-
-    @Column(name = "ROUTENUMBER")
+    @Column(name = ("ROUTENUMBER"))
     private String routeNumber;
-    @Column(name = "ROUTENAME")
+    @Column(name = ("ROUTENAME"))
     private String routeName;
     //private ArrayList<RouteStop> routeStops;
+    public Route() {
+    }
+
+    public Route(String routeNumber, String routeName) {
+        this.routeNumber = routeNumber;
+        this.routeName = routeName;
+    }
+
+    public Route(int id, String routeNumber, String routeName) {
+        this.id = id;
+        this.routeNumber = routeNumber;
+        this.routeName = routeName;
+    }
+
+
 
     public int getId() {
         return id;
