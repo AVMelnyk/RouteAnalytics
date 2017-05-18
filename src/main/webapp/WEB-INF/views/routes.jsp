@@ -2,12 +2,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>RouteAnalytics</title>
+    <title>Route Analytics</title>
     <link rel="stylesheet" href="../../css/main.css" />
 </head>
 <body>
 <h2 class="header">Routes list</h2>
-<a href="/">Home</a>
+<h2><a href="/">Home</a></h2>
 
     <table>
         <th>Номер Маршруту:</th>
