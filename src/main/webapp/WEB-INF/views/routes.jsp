@@ -8,7 +8,6 @@
 <body>
 <h2 class="header">Routes list</h2>
 <h2><a href="/">Home</a></h2>
-
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>
@@ -19,6 +18,5 @@
             </tr>
         </c:forEach>
     </table>
-
 </body>
 </html>

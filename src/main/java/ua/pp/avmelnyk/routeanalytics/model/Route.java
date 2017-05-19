@@ -30,8 +30,6 @@ public class Route {
         this.routeName = routeName;
     }
 
-
-
     public int getId() {
         return id;
     }

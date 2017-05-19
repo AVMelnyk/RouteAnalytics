@@ -2,14 +2,12 @@ package ua.pp.avmelnyk.routeanalytics.dao;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.springframework.stereotype.Repository;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import java.util.List;
 
 
-public class RouteDAOImpl  implements RouteDAO{
+public class RouteDAOImpl  implements RouteDAO {
 
     private Session session;
 
@@ -32,7 +30,7 @@ public class RouteDAOImpl  implements RouteDAO{
     }
 
     @SuppressWarnings("unchecked")
-    public List<Route> listRoutes() {
+    public List<Route> getAllRoutes() {
         Query query = session.createQuery("from Route ");
         List<Route> routes = query.list();
         System.out.println("Routes list");
