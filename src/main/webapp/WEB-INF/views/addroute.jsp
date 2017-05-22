@@ -3,14 +3,24 @@
 <html>
 <head>
     <title>Route Analytics</title>
+    <link rel="stylesheet" href="../../css/addroute.css" />
 </head>
 <body>
     <form name="addroute" action="/addroute"  method="POST" accept-charset="UTF-8" >
-        <ul>
-            <li><label>Route Number:</label> <input type='text' name='routenumber' /></li>
-            <li><label>Route Name: </label> <input type="text" name="routename"></li>
-            <li><input type="submit" value="OK" class="btn"></li>
-        </ul>
+
+        <table>
+            <tr>
+                <td>Route Number:</td>
+                <td><input type='text' name='routenumber'/></td>
+            </tr>
+            <tr>
+                <td>Route Name: </td>
+                <td><input type="text" name="routename"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="add route" class="btn"></td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

@@ -38,6 +38,6 @@ public class RouteController {
     public String addRoute(@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
 
         routeService.addRoute(new Route(routeNumber, routeName));
-        return "/addroute";
+        return "redirect:routes";
     }
 }
