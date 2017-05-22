@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>Route Analytics</title>
@@ -8,6 +8,7 @@
 <body>
 <h2 class="header">Routes list</h2>
 <h2><a href="/">Home</a></h2>
+<h2><a href="/addroute">Add Route</a></h2>
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
 
@@ -28,4 +29,15 @@ public class RouteController {
         return "register";
     }
 
+    @RequestMapping(value = "/addroute", method = RequestMethod.GET)
+    public String showAddRouteform(){
+        return "addroute";
+    }
+
+    @RequestMapping(value = "/addroute", method = RequestMethod.POST)
+    public String addRoute(@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
+
+        routeService.addRoute(new Route(routeNumber, routeName));
+        return "/addroute";
+    }
 }
