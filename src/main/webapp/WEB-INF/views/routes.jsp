@@ -12,10 +12,14 @@
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>
+        <th>Змінити</th>
+        <th>Видалити</th>
         <c:forEach var="route"  items="${routeList}">
             <tr>
                 <td><c:out value = "${route.routeNumber}"/></td>
                 <td><c:out value = "${route.routeName}"/></td>
+                <td><a href="<c:url value='/edit/${route.id}' />" >Edit</a></td>
+                <td><a href="<c:url value='/remove/${route.id}' />" >Delete</a></td>
             </tr>
         </c:forEach>
     </table>

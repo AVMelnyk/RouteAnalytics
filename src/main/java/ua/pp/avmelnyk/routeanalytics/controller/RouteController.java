@@ -2,6 +2,7 @@ package ua.pp.avmelnyk.routeanalytics.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,5 +40,10 @@ public class RouteController {
 
         routeService.addRoute(new Route(routeNumber, routeName));
         return "redirect:routes";
+    }
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+    public String removeRoute(@PathVariable("id") int id){
+        routeService.removeRoute(id);
+        return "redirect:/routes";
     }
 }
