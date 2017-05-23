@@ -10,6 +10,7 @@ public class TestPoint {
         RouteServiceImpl routeService = new RouteServiceImpl();
         Route route = new Route("211"," fdfsdfsf - fsdfsdfd");
         routeService.addRoute(route);
+        routeService.updateRoute(new Route(29, "fdsfd", "dsadas"));
     }
 
 }

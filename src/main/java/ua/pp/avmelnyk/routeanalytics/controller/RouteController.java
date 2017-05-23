@@ -35,6 +35,11 @@ public class RouteController {
         return "addroute";
     }
 
+    @RequestMapping(value = "/editroute", method = RequestMethod.GET)
+    public String showEditRouteform(){
+        return "editroute";
+    }
+
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
     public String addRoute(@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
 
@@ -44,6 +49,17 @@ public class RouteController {
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeRoute(@PathVariable("id") int id){
         routeService.removeRoute(id);
+        return "redirect:/routes";
+    }
+    @RequestMapping(value = "/editroute/{id}", method = RequestMethod.GET)
+    public String editRoute(@PathVariable("id") int id, Model model){
+        model.addAttribute("route", routeService.getRouteById(id));
+        return "editroute";
+    }
+    @RequestMapping(value = "/editroutepost", method = RequestMethod.POST)
+    public String editRoutePost(@RequestParam("routeID") String routeid, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
+        int id = Integer.parseInt(routeid);
+        routeService.updateRoute(new Route(id, routeNumber,routeName));
         return "redirect:/routes";
     }
 }

@@ -18,7 +18,7 @@
             <tr>
                 <td><c:out value = "${route.routeNumber}"/></td>
                 <td><c:out value = "${route.routeName}"/></td>
-                <td><a href="<c:url value='/edit/${route.id}' />" >Edit</a></td>
+                <td><a href="<c:url value='/editroute/${route.id}' />" >Edit</a></td>
                 <td><a href="<c:url value='/remove/${route.id}' />" >Delete</a></td>
             </tr>
         </c:forEach>
