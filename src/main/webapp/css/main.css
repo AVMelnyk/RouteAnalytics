@@ -1,3 +1,4 @@
+
 body{
     background-color: gainsboro;
 }
@@ -19,4 +20,32 @@ td{
 }
 .header{
     text-align: center;
+}
+body{
+    margin: 0;
+}
+.nav__item{
+}
+.nav_items{
+    width: 100%;
+    background-color: crimson;
+    margin: 0;
+    padding: 0;
+}
+.nav__item {
+    line-height: 62px;
+    display: inline-block;
+    background-color: crimson;
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 10px 60px 10px  60px ;
+
+}
+.nav__item a{
+    text-decoration: none;
+    color: white;
+}
+.nav__item:hover{
+    background-color: #111;
 }

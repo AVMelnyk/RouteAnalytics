@@ -6,6 +6,14 @@
     <link rel="stylesheet" href="../../css/main.css" />
 </head>
 <body>
+<div class="nav_main">
+    <nav class="nav_items">
+        <li class="nav__item"><a href="/">Home</a></li>
+        <li class="nav__item"><a href="/register">Register</a></li>
+        <li class="nav__item"><a href="/routes">Routes</a></li>
+        <li class="nav__item"><a href="/about">About</a></li>
+    </nav>
+</div>
 <h2><a href="/">Home</a></h2>
 <h2><a href="/routes">Routes</a></h2>
 <form name="editroute" action="/editroutepost"  method="POST" accept-charset="UTF-8" >
