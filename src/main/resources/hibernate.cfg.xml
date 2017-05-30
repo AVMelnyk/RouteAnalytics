@@ -6,9 +6,9 @@
     <session-factory>
         <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
         <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/RouteAnalytics</property>
-        <property name="hibernate.connection.username">postgres</property>
-        <property name="hibernate.connection.password">123456</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://ec2-50-19-219-69.compute-1.amazonaws.com/d7q83cmlo36k76?sslmode=require&amp;ssl=true&amp;sslfactory=org.postgresql.ssl.NonValidatingFactory</property>
+        <property name="hibernate.connection.username">kixesptezsobvr</property>
+        <property name="hibernate.connection.password">9c295e1dc097efb717554f2bb360aff34fa252cc1aa669cff5725647502fd4c7</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
         <property name="show_sql">true</property>
         <mapping class="ua.pp.avmelnyk.routeanalytics.model.Route"></mapping>

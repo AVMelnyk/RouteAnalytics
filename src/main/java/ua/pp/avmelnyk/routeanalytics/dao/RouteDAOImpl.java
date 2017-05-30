@@ -40,16 +40,16 @@ public class RouteDAOImpl  implements RouteDAO {
     public List<Route> getAllRoutes() {
         List<Route> routes;
         try {
-            session.beginTransaction();
-            Query query = session.createQuery("from Route ");
-            routes = query.list();
-            session.getTransaction().commit();
+            Transaction transaction = session.beginTransaction();
+            routes = session.createCriteria(Route.class).list();
+            transaction.commit();
         }
         catch (RuntimeException e) {
             session.getTransaction().rollback();
             throw e;
         }
         return routes;
+
     }
 
     public Route getRouteById(int id) {

@@ -1,11 +1,12 @@
 package ua.pp.avmelnyk.routeanalytics.dao;
 
 import org.hibernate.Session;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.persistence.HibernateUtil;
 
 import java.util.List;
-
 public class RouteServiceImpl implements RouteService{
     private RouteDAO routeDAO;
 
@@ -16,9 +17,11 @@ public class RouteServiceImpl implements RouteService{
         Session session = HibernateUtil.getSessionFactory().openSession();
         this.routeDAO  = new RouteDAOImpl(session);
     }
+
     public void addRoute(Route route) {
         this.routeDAO.addRoute(route);
     }
+
     public void updateRoute(Route route) {
         this.routeDAO.updateRoute(route);
     }
