@@ -62,4 +62,9 @@ public class RouteController {
         routeService.updateRoute(new Route(id, routeNumber,routeName));
         return "redirect:/routes";
     }
+
+    @RequestMapping(value = "/contacts", method = RequestMethod.GET)
+    public String showcontacts() {
+        return "contacts";
+    }
 }

@@ -9,7 +9,7 @@
         <li><a href="/">Home</a></li>
         <li><a href="/routes">routes</a></li>
         <li><a href="/register">register</a></li>
-        <li><a href="/about">about</a></li>
+        <li><a href="/contacts">contacts</a></li>
     </ul>
         <h2>Hello World!</h2>
         <h1>It`s Route Analytics home page!</h1>
