@@ -7,6 +7,8 @@ import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.persistence.HibernateUtil;
 
 import java.util.List;
+
+@Service
 public class RouteServiceImpl implements RouteService{
     private RouteDAO routeDAO;
 

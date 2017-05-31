@@ -1,11 +1,11 @@
 package ua.pp.avmelnyk.routeanalytics.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.NoHandlerFoundException;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
 
@@ -16,13 +16,14 @@ public class RouteController {
 
     private RouteServiceImpl routeService;
 
-    public RouteController() {
-        routeService = new RouteServiceImpl();
+    @Autowired
+    public RouteController(RouteServiceImpl routeService) {
+        this.routeService = routeService;
     }
 
     @RequestMapping(value = "/routes", method = RequestMethod.GET)
-    public void getdata(Model model) {
-        List<Route> routeList =routeService.getAllRoutes();
+    public void getData(Model model) {
+        List<Route> routeList = routeService.getAllRoutes();
         model.addAttribute(routeList);
     }
     @RequestMapping(value = "/register", method = RequestMethod.GET)
