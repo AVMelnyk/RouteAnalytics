@@ -4,9 +4,15 @@
 <html>
 <head>
     <title>Route Analytics</title>
-    <link rel="stylesheet" href="../../css/register.css" />
+    <link rel="stylesheet" href="../../css/register_style.css" />
 </head>
 <body>
+<ul>
+    <li><a href="/">Route Analytics</a></li>
+    <li><a href="/routes">Routes</a></li>
+    <li><a href="/register">Register</a></li>
+    <li><a href="/contacts">Contacts</a></li>
+</ul>
 <h1>Register</h1>
 <h2><a href="/">Home</a></h2>
 <form method="POST">
@@ -28,7 +34,7 @@
             <td><input type="password" name="password" /></td>
         </tr>
     </table>
-    <input type="submit" value="Register" />
+    <input  class="submit" type="submit" value="Register" />
 
 </form>
 </body>

@@ -1,6 +1,9 @@
 body{
-    font-family: "Times New Roman", Georgia, Serif;
     font-size: 20px;
+    margin: 0;
+    background-color: crimson;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 table{
     margin-left: auto;
@@ -17,12 +20,10 @@ input[type=text] {
 }
 .btn{
     border-radius: 5px;
+    border: 2px black solid;
     font-size: 20px;
-    background-color: #4CAF50;
-    color: white;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
     cursor: pointer;
     width: 100%;
 }

@@ -3,12 +3,17 @@
 <html>
 <head>
     <title>Route Analytics</title>
-    <link rel="stylesheet" href="../../css/main.css" />
+    <link rel="stylesheet" href="../../css/routes_style.css" />
 </head>
 <body>
+<ul>
+    <li><a href="/">Route Analytics</a></li>
+    <li><a href="/routes">Routes</a></li>
+    <li><a href="/register">Register</a></li>
+    <li><a href="/contacts">Contacts</a></li>
+</ul>
 <h2 class="header">Routes list</h2>
-<h2><a href="/">Home</a></h2>
-<h2><a href="/addroute">Add Route</a></h2>
+<a class="addroutelink" href="/addroute">add new route</a>
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>

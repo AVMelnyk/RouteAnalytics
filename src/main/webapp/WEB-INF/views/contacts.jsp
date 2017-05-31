@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Route Analytics</title>
-    <link rel="stylesheet" href="../../css/homepage_style.css" />
+    <link rel="stylesheet" href="../../css/contacts_style.css" />
 </head>
 <body>
 <div class="contacts">
