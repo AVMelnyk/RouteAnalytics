@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    background-color: crimson;
+    background-color: whitesmoke;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -10,7 +10,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: crimson;
+    background-color: whitesmoke;
     width: 100%;
 }
 
@@ -18,7 +18,7 @@ li {
     float: left;
     width: 24%;
     border-radius: 2px;
-    border-bottom: 3px crimson solid;
+    border-bottom: 3px whitesmoke solid;
 }
 li:hover{
     box-shadow: 0 0 10px rgba(0,0,0,0.5);
@@ -34,8 +34,8 @@ li a {
     font-weight: bold;
 }
 li a:hover{
-    background-color: darksalmon;
-    opacity: 0.5;
+    background-color: darkgrey;
+    opacity: 1;
 }
 /* MENU */
 table{
