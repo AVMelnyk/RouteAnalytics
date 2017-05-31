@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.NoHandlerFoundException;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
@@ -57,12 +58,12 @@ public class RouteController {
         model.addAttribute("route", routeService.getRouteById(id));
         return "editroute";
     }
-    @RequestMapping(value = "/editroutepost", method = RequestMethod.POST)
-    public String editRoutePost(@RequestParam("routeID") String routeid, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
-        int id = Integer.parseInt(routeid);
+    @RequestMapping(value="/editroute/{id}", method = RequestMethod.POST)
+    public String editRoutePost(@PathVariable("id") int id, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
         routeService.updateRoute(new Route(id, routeNumber,routeName));
         return "redirect:/routes";
     }
+
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String showcontacts() {

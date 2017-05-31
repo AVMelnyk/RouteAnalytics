@@ -12,12 +12,8 @@
     <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
 </ul>
-<form name="editroute" action="/editroutepost"  method="POST" accept-charset="UTF-8" >
+<form name="editroute"   method="POST" accept-charset="UTF-8" >
     <table>
-        <tr>
-            <td>Route ID</td>
-            <td><input type='text' name='routeID' value="<c:out value = "${route.id}"/>"/></td>
-        </tr>
         <tr>
             <td>Route Number:</td>
             <td><input type='text' name='routenumber' value="<c:out value = "${route.routeNumber}"/>"/></td>
