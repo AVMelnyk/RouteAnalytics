@@ -4,6 +4,7 @@
 <head>
     <title>Route Analytics</title>
     <link rel="stylesheet" href="../../css/addroute.css" />
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
     <form name="addroute" action="/addroute"  method="POST" accept-charset="UTF-8" >

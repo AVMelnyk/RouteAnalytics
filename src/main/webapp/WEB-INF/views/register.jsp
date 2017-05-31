@@ -5,6 +5,7 @@
 <head>
     <title>Route Analytics</title>
     <link rel="stylesheet" href="../../css/register_style.css" />
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <ul>
@@ -35,7 +36,6 @@
         </tr>
     </table>
     <input  class="submit" type="submit" value="Register" />
-
 </form>
 </body>
 </html>

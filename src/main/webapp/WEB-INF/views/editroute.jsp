@@ -4,6 +4,7 @@
 <head>
     <title>Route Analytics</title>
     <link rel="stylesheet" href="../../css/editroute_style.css" />
+    <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
 <ul>
