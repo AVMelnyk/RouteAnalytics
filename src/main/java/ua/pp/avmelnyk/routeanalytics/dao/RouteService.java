@@ -6,9 +6,9 @@ import ua.pp.avmelnyk.routeanalytics.model.Route;
 import java.util.List;
 
 public interface RouteService {
-    public void addRoute(Route route);
-    public void updateRoute(Route route);
-    public List<Route> getAllRoutes();
-    public Route getRouteById(int id);
-    public void removeRoute(int id);
+    void addRoute(Route route);
+    void updateRoute(Route route);
+    List<Route> getAllRoutes();
+    Route getRouteById(int id);
+    void removeRoute(int id);
 }

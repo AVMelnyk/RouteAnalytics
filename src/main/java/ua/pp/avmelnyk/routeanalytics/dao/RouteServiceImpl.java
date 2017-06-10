@@ -2,7 +2,6 @@ package ua.pp.avmelnyk.routeanalytics.dao;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.persistence.HibernateUtil;
 

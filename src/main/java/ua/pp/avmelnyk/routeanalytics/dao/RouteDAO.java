@@ -5,10 +5,10 @@ import java.util.List;
 
 public interface RouteDAO {
 
-    public void addRoute(Route route);
-    public void updateRoute(Route route);
-    public List<Route> getAllRoutes();
-    public Route getRouteById(int id);
-    public void removeRoute(int id);
+    void addRoute(Route route);
+    void updateRoute(Route route);
+    List<Route> getAllRoutes();
+    Route getRouteById(int id);
+    void removeRoute(int id);
 
 }
