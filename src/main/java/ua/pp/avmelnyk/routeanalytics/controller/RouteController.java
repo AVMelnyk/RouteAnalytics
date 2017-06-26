@@ -45,17 +45,10 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
-    public String addRoute(Model model,@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName,
-                           @RequestParam("numberofstops") Integer NumberOfStops){
-        List<RouteStop>stopList = new ArrayList<RouteStop>(NumberOfStops);
-        Route route = new Route(routeNumber, routeName);
-        for (int i = 1; i <= NumberOfStops; i++ ){
-            //stopList.add(new RouteStop(i, "", route));
-        }
-        model.addAttribute("stopList", stopList);
-        model.addAttribute("route", route);
-        //routeService.addRoute(new Route(routeNumber, routeName));
-        return "addroutestops";
+    public String addRoute(@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
+
+        routeService.addRoute(new Route(routeNumber, routeName));
+        return "redirect:routes";
     }
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeRoute(@PathVariable("id") int id){
