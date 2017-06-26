@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
 
 import java.util.List;
-@Service
+
 public class RouteStopDAOImpl implements RouteStopDAO{
 
     private Session session;

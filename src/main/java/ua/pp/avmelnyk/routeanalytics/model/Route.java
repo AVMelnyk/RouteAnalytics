@@ -11,6 +11,7 @@ import java.util.Set;
 public class Route {
     @Id
     @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     @Column(name = ("ROUTE_ID"))
     private int routeID;
     @Column(name = ("ROUTENUMBER"))
