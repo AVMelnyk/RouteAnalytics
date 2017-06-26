@@ -11,7 +11,7 @@
         <property name="hibernate.connection.password">9c295e1dc097efb717554f2bb360aff34fa252cc1aa669cff5725647502fd4c7</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</property>
         <property name="show_sql">true</property>
-        <mapping class="ua.pp.avmelnyk.routeanalytics.model.Route"></mapping>
-
+        <mapping class="ua.pp.avmelnyk.routeanalytics.model.Route"/>
+        <mapping class="ua.pp.avmelnyk.routeanalytics.model.RouteStop"/>
     </session-factory>
 </hibernate-configuration>

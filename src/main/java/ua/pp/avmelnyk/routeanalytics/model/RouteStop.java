@@ -3,24 +3,23 @@ package ua.pp.avmelnyk.routeanalytics.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ROUTESTOP")
+@Table(name = "ROUTESTOPS")
 public class RouteStop {
 
     @Id
-    @Column(name = "ROUTESTOPID")
+    @Column(name = "routestop_id")
     private int routeStopId;
 
     @Column(name = "ROUTESTOPNAME")
     private String routeStopName;
 
     @ManyToOne
-    @JoinColumn(name = "ID")
+    @JoinColumn(name = "ROUTE_ID")
     private Route route;
 
-    public RouteStop(int routeStopId, String routeStopName, Route route) {
+    public RouteStop(int routeStopId, String routeStopName) {
         this.routeStopId = routeStopId;
         this.routeStopName = routeStopName;
-        this.route = route;
     }
 
     public RouteStop() {
@@ -42,9 +41,20 @@ public class RouteStop {
         this.routeStopName = routeStopName;
     }
 
-    @Override
-    public String toString(){
-        return "RouteStopName" + routeStopName;
+    public Route getRoute() {
+        return route;
     }
 
+    public void setRoute(Route route) {
+        this.route = route;
+    }
+
+    @Override
+    public String toString() {
+        return "RouteStop{" +
+                "routeStopId=" + routeStopId +
+                ", routeStopName='" + routeStopName + '\'' +
+                ", route=" + route +
+                '}';
+    }
 }

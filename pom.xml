@@ -10,7 +10,7 @@
 
 
     <properties>
-      <hibernate.version>4.2.21.Final</hibernate.version>
+      <hibernate.version>4.3.6.Final</hibernate.version>
     </properties>
   <dependencies>
     <dependency>

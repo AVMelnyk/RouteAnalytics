@@ -1,21 +1,26 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
-;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = ("ROUTES"))
 public class Route {
     @Id
     @GenericGenerator(name="kaugen" , strategy="increment")
-    @GeneratedValue(generator="kaugen")
-    @Column(name = ("ID"))
-    private int id;
+    @Column(name = ("ROUTE_ID"))
+    private int routeID;
     @Column(name = ("ROUTENUMBER"))
     private String routeNumber;
     @Column(name = ("ROUTENAME"))
     private String routeName;
-    //private ArrayList<RouteStop> routeStops;
+
+    @OneToMany(mappedBy = "route")
+    private List<RouteStop> routeStops;
+
     public Route() {
     }
 
@@ -24,18 +29,18 @@ public class Route {
         this.routeName = routeName;
     }
 
-    public Route(int id, String routeNumber, String routeName) {
-        this.id = id;
+    public Route(int routeID, String routeNumber, String routeName) {
+        this.routeID = routeID;
         this.routeNumber = routeNumber;
         this.routeName = routeName;
     }
 
     public int getId() {
-        return id;
+        return routeID;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId(int routeID) {
+        this.routeID = routeID;
     }
 
 
@@ -54,17 +59,17 @@ public class Route {
     public void setRouteName(String routeName) {
         this.routeName = routeName;
     }
-    /*
-    public ArrayList<RouteStop> getRouteStops() {
-        return routeStops;
+
+    public List<RouteStop> getRouteStops() {
+        return (List<RouteStop>) routeStops;
     }
 
-    public void setRouteStops(ArrayList<RouteStop> routeStops) {
+    public void setRouteStops(List<RouteStop> routeStops) {
         this.routeStops = routeStops;
     }
-    */
+
     @Override
     public String toString(){
-        return "id="+id+", routeNumber="+routeNumber+", RouteName="+routeName;
+        return "id="+routeID+", routeNumber="+routeNumber+", RouteName="+routeName;
     }
 }

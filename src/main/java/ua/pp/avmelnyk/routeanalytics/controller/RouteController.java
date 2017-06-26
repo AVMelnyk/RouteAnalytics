@@ -50,7 +50,7 @@ public class RouteController {
         List<RouteStop>stopList = new ArrayList<RouteStop>(NumberOfStops);
         Route route = new Route(routeNumber, routeName);
         for (int i = 1; i <= NumberOfStops; i++ ){
-            stopList.add(new RouteStop(i, "", route));
+            //stopList.add(new RouteStop(i, "", route));
         }
         model.addAttribute("stopList", stopList);
         model.addAttribute("route", route);
