@@ -2,10 +2,11 @@ package ua.pp.avmelnyk.routeanalytics.model;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.List;
 
 public class User {
 
-    private Long ID;
+    private Long userID;
 
     @NotNull
     @Size(min = 5, max = 16)
@@ -23,20 +24,25 @@ public class User {
     @Size(min=2, max=30)
     private String lastName;
 
-    public User(Long ID, String username, String password, String firstName, String lastName) {
-        this.ID = ID;
+    @NotNull
+    private String email;
+
+    private List<Route> routeList;
+
+    public User(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
     }
 
     public Long getID() {
-        return ID;
+        return userID;
     }
 
     public void setID(Long ID) {
-        this.ID = ID;
+        this.userID = ID;
     }
 
     public String getUsername() {
@@ -69,6 +75,35 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Route> getRouteList() {
+        return routeList;
+    }
+
+    public void setRouteList(List<Route> routeList) {
+        this.routeList = routeList;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userID=" + userID +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", email='" + email + '\'' +
+                ", routeList=" + routeList +
+                '}';
     }
 }
 
