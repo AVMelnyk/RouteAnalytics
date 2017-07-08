@@ -13,7 +13,7 @@
     <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
 </ul>
-<form name="editroute"   method="POST" accept-charset="UTF-8" >
+<form name="/addroutestops"   method="POST" accept-charset="UTF-8" >
     <p class="route_header">Номер маршруту: <c:out value = "${route.routeNumber} "/></p>
     <p class="route_header">Напрямок слідування: <c:out value = "${route.routeName}"/></p>
     <table class="routestops_table">
@@ -22,11 +22,11 @@
         <c:forEach var="routeStop"  items="${stopList}">
         <tr>
             <td><c:out value = "${routeStop.routeStopId}"/></td>
-            <td><input type='text' name='stopname'/></td>
+            <td><input type='text' name='stopname/<c:out value = "${routeStop.routeStopId}"/>'/></td>
         </tr>
     </c:forEach>
     </table>
-    <span ><input type="submit" value="Save Route" class="btn"></span>
+    <span><input type="submit" value="Save Route" class="btn"></span>
 </form>
 </body>
 </html>

@@ -56,8 +56,15 @@ public class RouteController {
         model.addAttribute("stopList", stopList);
         model.addAttribute("route", route);
         //routeService.addRoute(new Route(routeNumber, routeName));
-        return "addroutestops";
+        return "redirect:/addroutestops";
     }
+
+    @RequestMapping(value = "/addroutestops", name = "RequestMethod.POST")
+    public String addRouteWithStops(){
+
+      return "redirect:/routes";
+    }
+
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeRoute(@PathVariable("id") int id){
