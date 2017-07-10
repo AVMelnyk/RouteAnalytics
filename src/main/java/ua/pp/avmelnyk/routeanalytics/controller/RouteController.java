@@ -55,7 +55,7 @@ public class RouteController {
         }
         model.addAttribute("stopList", stopList);
         model.addAttribute("route", route);
-        //routeService.addRoute(new Route(routeNumber, routeName));
+        routeService.addRoute(new Route(routeNumber, routeName));
         return "redirect:/addroutestops";
     }
 

@@ -1,4 +1,7 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
+<%@ page isELIgnored="false" %>
+<%@ taglib uri='http://java.sun.com/jsp/jstl/core' prefix='c'%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +16,7 @@
     <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
 </ul>
-<form name="editroute"   method="POST" accept-charset="UTF-8" >
+<form:form name="editroute"   method="POST" accept-charset="UTF-8" >
     <table>
         <tr>
             <td>Route Number:</td>
@@ -27,7 +30,7 @@
             <td colspan="2"><input type="submit" value="edit route" class="btn"></td>
         </tr>
     </table>
-</form>
+</form:form>
 </body>
 </html>
 
