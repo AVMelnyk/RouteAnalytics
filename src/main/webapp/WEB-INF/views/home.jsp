@@ -5,10 +5,10 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
     <head>
+        <link rel="stylesheet" href="../../css/homepage_style.css" />
         <base href="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}/" />
         <sec:csrfMetaTags/>
         <title>Route Analytics</title>
-        <link rel="stylesheet" href="../../css/homepage_style.css" />
         <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
     </head>
     <body>
