@@ -9,7 +9,10 @@
   <url>http://maven.apache.org</url>
   <properties>
     <hibernate.version>4.2.21.Final</hibernate.version>
+<<<<<<< HEAD
 
+=======
+>>>>>>> ebb9fb111af2d18601bf6f8f9503ad64ba350f6e
   </properties>
   <dependencies>
     <dependency>

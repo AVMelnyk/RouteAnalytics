@@ -23,10 +23,6 @@
                 <td><input type="text" name="routename"></td>
             </tr>
             <tr>
-                <td>Number of stops: </td>
-                <td><input type="text" name="numberofstops"></td>
-            </tr>
-            <tr>
                 <td colspan="2"><input type="submit" value="add route" class="btn"></td>
             </tr>
         </table>
