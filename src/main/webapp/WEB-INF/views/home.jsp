@@ -25,7 +25,7 @@
             <h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
             <%--@elvariable id="_csrf" type="org.springframework.web.bind.MissingServletRequestParameterException"--%>
             <c:url var="logoutUrl" value="/logout" />
-            <form action="${logoutUrl}" id="logout" method="post">
+            <form action="/logout" id="logout" method="post">
                 <input type="hidden" name="${_csrf.parameterName}"
                        value="${_csrf.token}" />
                 <input type="submit" name="submit" value="Log Out">

@@ -31,7 +31,13 @@ public class AppSecurityConfig  extends WebSecurityConfigurerAdapter{
                 .antMatchers("/editroute/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/remove/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/addroute").access("hasRole('ROLE_USER')")
-                .and().formLogin().defaultSuccessUrl("/", false);
-
+                .and().formLogin().loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .loginProcessingUrl("/spring_security_check")
+                .failureUrl("/login?error").permitAll()
+                .and().logout().
+                logoutUrl("/logout").
+                logoutSuccessUrl("/");
     }
 }
