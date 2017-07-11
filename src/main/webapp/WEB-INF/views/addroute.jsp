@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fotm" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Route Analytics</title>
@@ -12,20 +13,23 @@
     <sec:csrfMetaTags/>
 </head>
 <body>
-    <form:form name="addroute" action="/addroute"  method="POST" acceptCharset="UTF-8">
-        <table>
-            <tr>
-                <td>Route Number:</td>
-                <td><input type='text' name='routenumber'/></td>
-            </tr>
-            <tr>
-                <td>Route Name: </td>
-                <td><input type="text" name="routename"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><input type="submit" value="add route" class="btn"></td>
-            </tr>
-        </table>
-    </form:form>
+    <div class="routeform">
+    <form:form name="addroute" action="/addroute"  method="POST"  modelAttribute="route" acceptCharset="UTF-8">
+
+            <p>
+                <form:label path="routeNumber">Route Number</form:label>
+                <form:input path="routeNumber"/>
+            </p>
+            <p>
+                <form:label path="routeName">Route Name</form:label>
+                <form:input path="routeName"/>
+            </p>
+            <p>
+                <label for="numberofstops">Number of stops</label>
+                <input type="text" name="numberofstops" id="numberofstops">
+            </p>
+        <td colspan="2"><input type="submit" value="add route" class="btn"></td>
+    </div>
+</form:form>
 </body>
 </html>

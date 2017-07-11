@@ -35,7 +35,9 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.GET)
-    public String showAddRouteform(){
+    public String showAddRouteform(Model model){
+        Route route = new Route();
+        model.addAttribute("route", route);
         return "addroute";
     }
 
@@ -45,17 +47,15 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
-    public String addRoute(Model model,@RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName,
+    public String addRoute(Model model, @ModelAttribute ("route") Route route,
                            @RequestParam("numberofstops") Integer NumberOfStops){
         List<RouteStop>stopList = new ArrayList<RouteStop>(NumberOfStops);
-        Route route = new Route(routeNumber, routeName);
         for (int i = 1; i <= NumberOfStops; i++ ){
             stopList.add(new RouteStop(i, ""));
-
         }
         model.addAttribute("stopList", stopList);
         model.addAttribute("route", route);
-        routeService.addRoute(new Route(routeNumber, routeName));
+        routeService.addRoute(route);
         return "redirect:/addroutestops";
     }
 

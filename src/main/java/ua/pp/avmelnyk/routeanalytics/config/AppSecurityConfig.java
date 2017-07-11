@@ -30,7 +30,7 @@ public class AppSecurityConfig  extends WebSecurityConfigurerAdapter{
                 .antMatchers("/routes/**").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .antMatchers("/editroute/**").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/remove/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("/addroute").access("hasRole('ROLE_USER')")
+                .antMatchers("/addroute").access("hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')")
                 .and().formLogin().loginPage("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
