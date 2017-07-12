@@ -4,8 +4,15 @@
 <html>
 <head>
     <title>Route Analytics</title>
+    <link rel="stylesheet" href="../../css/login.css" />
 </head>
 <body>
+    <div class="error_message">
+    <c:if test="${not empty SPRING_SECURITY_LAST_EXCEPTION}">
+            Your login attempt was not successful due to <br/><br/>
+            <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>.
+    </c:if>
+    </div>
     <c:url value="/spring_security_check" var="loginUrl" />
     <form action="${loginUrl}" method="post">
         <h2 class="form-signin-heading">Please sign in</h2>

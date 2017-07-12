@@ -65,7 +65,6 @@ public class RouteController {
         return "redirect:/routes";
     }
 
-
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
     public String removeRoute(@PathVariable("id") int id){
         routeService.removeRoute(id);
@@ -81,7 +80,6 @@ public class RouteController {
         routeService.updateRoute(new Route(id, routeNumber,routeName));
         return "redirect:/routes";
     }
-
 
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String showcontacts() {
