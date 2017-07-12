@@ -10,8 +10,6 @@
 <body>
 <ul>
     <li><a href="/">Route Analytics</a></li>
-    <li><a href="/routes">Routes</a></li>
-    <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
 </ul>
 <h1>Register</h1>

@@ -43,14 +43,8 @@
             <h1>It`s Route Analytics home page!</h1>
         </div>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
-            <h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
-            <%--@elvariable id="_csrf" type="org.springframework.web.bind.MissingServletRequestParameterException"--%>
-            <c:url var="logoutUrl" value="/logout" />
-            <form action="/logout" id="logout" method="post">
-                <input type="hidden" name="${_csrf.parameterName}"
-                       value="${_csrf.token}" />
-                <input type="submit" name="submit"  value="Log Out">
-            </form>
+            <div class="greeting"><h2>Welcome : ${pageContext.request.userPrincipal.name}</h2>
+            </div>
         </c:if>
     </body>
 </html>

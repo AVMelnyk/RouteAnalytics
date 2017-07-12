@@ -9,6 +9,7 @@
 <body>
 <ul>
     <li><a href="/">Route Analytics</a></li>
+    <li><a href="/routes">Routes</a></li>
     <li><a href="/contacts">Contacts</a></li>
     <c:choose>
         <c:when test="${pageContext.request.userPrincipal.authenticated}">
