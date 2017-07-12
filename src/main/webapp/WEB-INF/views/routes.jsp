@@ -9,12 +9,26 @@
 <body>
 <ul>
     <li><a href="/">Route Analytics</a></li>
-    <li><a href="/routes">Routes</a></li>
-    <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
+    <c:choose>
+        <c:when test="${pageContext.request.userPrincipal.authenticated}">
+            <li>
+                <form action="/logout" id="logout" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}"
+                           value="${_csrf.token}" />
+                    <button type="submit" name=submit" value="logout" class="btn-link">Log out</button>
+                </form>
+            </li>
+        </c:when>
+        <c:otherwise>
+            <li><a href="/login">Log in</a></li>
+        </c:otherwise>
+    </c:choose>
 </ul>
 <h2 class="header">Routes list</h2>
-<a class="addroutelink" href="/addroute">add new route</a>
+
+        <a href="/addroute" class="button">add new route</a>
+
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>
