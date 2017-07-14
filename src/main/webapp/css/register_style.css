@@ -38,45 +38,42 @@ li a:hover{
 }
 /* MENU */
 
-form{
+/*Error Message*/
+.error_message{
+    width: 300px;
+    margin: 20px auto 20px auto;
+    color: red;
     font-size: 20px;
-    padding-left: 10px;
+}
+/*Registration Form*/
+.registr_greetings{
+    margin: 10px auto 10px auto;
+    width: 300px;
+}
+
+.registration_form{
+    margin: 10px auto 10px auto;
+    width: 300px;
+    font-size: 18px;
+}
+
+.registration_form .label{
+    margin: 5px;
+    width: 300px;
+}
+.registration_form .input{
+    margin: 5px;
+    width: 300px;
+    height: 25px;
 }
 input{
-    margin: 10px;
-    padding: 5px;
+    height: 30px;
+    width: 300px;
 }
-table{
-    margin-top: 40px;
-    border-collapse: collapse;
-    border: 2px black solid;
-    margin-left:auto;
-    margin-right:auto;
-    text-align: left;
-}
-th{
-    border: 2px black solid;
-    padding: 10px;
-    text-align: center;
-}
-td{
-    border: 2px black solid;
-    padding: 10px;
-}
-input[type ="text"]{
-    margin: 0;
-    height: 100%;
-
-
-}
-input[type ="password"]{
-    margin: 0;
-}
-a{
-    color: black;
-}
-.submit{
+ .registration_form .input[type="submit"]{
+    margin-top: 10px;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    height: 50px;
+    font-size: 18px;
 }
+/*Registration Form*/

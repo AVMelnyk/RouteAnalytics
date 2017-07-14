@@ -31,9 +31,7 @@
     </c:choose>
 </ul>
 <h2 class="header">Routes list</h2>
-
         <a href="/addroute" class="button">add new route</a>
-
     <table>
         <th>Номер Маршруту:</th>
         <th>Напрямок:</th>

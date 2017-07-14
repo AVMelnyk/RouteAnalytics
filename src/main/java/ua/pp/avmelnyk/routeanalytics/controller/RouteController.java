@@ -34,6 +34,15 @@ public class RouteController {
         return "register";
     }
 
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String postRegistrationForm(Model model) {
+        model.addAttribute("errorMsg", "Registration form doesn't work temporarily.\n" +
+                "You can log in using:\n" +
+                "Login - user;\n" +
+                "Password  - userpassword;");
+        return "register";
+    }
+
     @RequestMapping(value = "/addroute", method = RequestMethod.GET)
     public String showAddRouteform(Model model){
         Route route = new Route();
