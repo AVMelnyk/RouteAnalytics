@@ -20,11 +20,11 @@ public class RouteStopDAOImpl implements RouteStopDAO{
             session.beginTransaction();
             session.save(routeStop);
             session.getTransaction().commit();
+            System.out.println("RouteStop added successfully "+routeStop.toString());
         }
         catch (RuntimeException e) {
             session.getTransaction().rollback();
         }
-        System.out.println("RouteStop added successfully "+routeStop.toString());
     }
 
     public void updateRouteStop(RouteStop routeStop) {

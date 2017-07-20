@@ -3,7 +3,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="fotm" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Route Analytics</title>
@@ -15,7 +14,6 @@
 <body>
     <div class="routeform">
     <form:form name="addroute" action="/addroute"  method="POST"  modelAttribute="route" acceptCharset="UTF-8">
-
             <p>
                 <form:label path="routeNumber">Route Number</form:label>
                 <form:input path="routeNumber"/>
@@ -29,6 +27,7 @@
                 <input type="text" name="numberofstops" id="numberofstops">
             </p>
         <td colspan="2"><input type="submit" value="add route" class="btn"></td>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </div>
 </form:form>
 </body>

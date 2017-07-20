@@ -1,16 +1,14 @@
 package ua.pp.avmelnyk.routeanalytics.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.context.request.WebRequest;
+import ua.pp.avmelnyk.routeanalytics.dao.RouteStopServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +16,12 @@ import java.util.List;
 public class RouteController {
 
     private RouteServiceImpl routeService;
+    private RouteStopServiceImpl routeStopService;
 
     @Autowired
-    public RouteController(RouteServiceImpl routeService) {
+    public RouteController(RouteServiceImpl routeService, RouteStopServiceImpl routeStopService) {
         this.routeService = routeService;
+        this.routeStopService = routeStopService;
     }
 
     @RequestMapping(value = "/routes", method = RequestMethod.GET)
@@ -57,20 +57,38 @@ public class RouteController {
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
     public String addRoute(Model model, @ModelAttribute ("route") Route route,
-                           @RequestParam("numberofstops") Integer NumberOfStops){
+                                 @RequestParam("numberofstops") Integer NumberOfStops){
         List<RouteStop>stopList = new ArrayList<RouteStop>(NumberOfStops);
         for (int i = 1; i <= NumberOfStops; i++ ){
             stopList.add(new RouteStop(i, ""));
         }
+        route.setRouteStops(stopList);
         model.addAttribute("stopList", stopList);
         model.addAttribute("route", route);
+        System.out.println(NumberOfStops);
         routeService.addRoute(route);
-        return "redirect:/addroutestops";
+        return "addroutestops";
     }
 
-    @RequestMapping(value = "/addroutestops", name = "RequestMethod.POST")
-    public String addRouteWithStops(){
+    @RequestMapping(value = "/addroutestops", method = RequestMethod.GET)
+    public String addRouteWithStops(Model model){
+        return "addroutestops";
+    }
 
+
+    @RequestMapping(value = "/addstops", method = RequestMethod.POST)
+    public String processingAddRouteWithStops( @RequestParam("route_id") int RouteID, @RequestParam("stoplistsize") int listsize, WebRequest request){
+        Route route = routeService.getRouteById(RouteID);
+        List<RouteStop> stopList = new ArrayList<RouteStop>();
+        for (int i = 1; i <= listsize; i++ ){
+            RouteStop routeStop = new RouteStop(i,request.getParameter("stopname/"+i));
+            stopList.add(routeStop);
+            System.out.println(request.getParameter("stopname/"+i));
+        }
+        for (RouteStop stop: stopList) {
+            stop.setRoute(route);
+            routeStopService.updateRouteStop(stop);
+        }
         return "redirect:/routes";
     }
 

@@ -19,7 +19,7 @@ public class Route {
     @Column(name = ("ROUTENAME"))
     private String routeName;
 
-    @OneToMany(mappedBy = "route")
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.ALL}, orphanRemoval = true)
     private List<RouteStop> routeStops;
 
     public Route() {
