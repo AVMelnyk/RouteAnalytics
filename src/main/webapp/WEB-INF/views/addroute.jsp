@@ -22,10 +22,6 @@
                 <form:label path="routeName">Route Name</form:label>
                 <form:input path="routeName"/>
             </p>
-            <p>
-                <label for="numberofstops">Number of stops</label>
-                <input type="text" name="numberofstops" id="numberofstops">
-            </p>
         <td colspan="2"><input type="submit" value="add route" class="btn"></td>
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
     </div>

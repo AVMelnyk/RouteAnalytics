@@ -56,18 +56,15 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
-    public String addRoute(Model model, @ModelAttribute ("route") Route route,
-                                 @RequestParam("numberofstops") Integer NumberOfStops){
-        List<RouteStop>stopList = new ArrayList<RouteStop>(NumberOfStops);
-        for (int i = 1; i <= NumberOfStops; i++ ){
-            stopList.add(new RouteStop(i, ""));
-        }
-        route.setRouteStops(stopList);
-        model.addAttribute("stopList", stopList);
+    public String addRoute(Model model, @ModelAttribute ("route") Route route ){
         model.addAttribute("route", route);
-        System.out.println(NumberOfStops);
         routeService.addRoute(route);
-        return "/route";
+        return "redirect:/route";
+    }
+
+    @RequestMapping(value = "/route", method = RequestMethod.GET)
+    public  String getRoute() {
+        return "route";
     }
 
     @RequestMapping(value = "/addroutestops", method = RequestMethod.GET)
