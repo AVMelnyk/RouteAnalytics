@@ -18,6 +18,5 @@
     </ul>
     <p><c:out value = "${route.routeNumber}"/></p>
     <p><c:out value = "${route.routeName}"/></p>
-
 </body>
 </html>

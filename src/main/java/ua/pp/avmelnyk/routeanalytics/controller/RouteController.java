@@ -59,11 +59,12 @@ public class RouteController {
     public String addRoute(Model model, @ModelAttribute ("route") Route route ){
         model.addAttribute("route", route);
         routeService.addRoute(route);
-        return "redirect:/route";
+        return "redirect:/route/"+route.getId();
     }
 
-    @RequestMapping(value = "/route", method = RequestMethod.GET)
-    public  String getRoute() {
+    @RequestMapping(value = "/route/{id}", method = RequestMethod.GET)
+    public  String getRoute(@PathVariable("id") int route_id, Model model) {
+        model.addAttribute(routeService.getRouteById(route_id));
         return "route";
     }
 
