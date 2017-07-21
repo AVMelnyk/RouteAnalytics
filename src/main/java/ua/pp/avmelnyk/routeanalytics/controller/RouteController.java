@@ -67,7 +67,7 @@ public class RouteController {
         model.addAttribute("route", route);
         System.out.println(NumberOfStops);
         routeService.addRoute(route);
-        return "addroutestops";
+        return "/route";
     }
 
     @RequestMapping(value = "/addroutestops", method = RequestMethod.GET)
@@ -89,7 +89,7 @@ public class RouteController {
             stop.setRoute(route);
             routeStopService.updateRouteStop(stop);
         }
-        return "redirect:/routes";
+        return "redirect:/route";
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)

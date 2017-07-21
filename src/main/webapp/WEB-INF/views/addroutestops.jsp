@@ -19,7 +19,7 @@
 </ul>
 <p class="route_header"  >Номер маршруту: <c:out value = "${route.routeNumber} "/></p>
 <p class="route_header">Напрямок слідування: <c:out value = "${route.routeName}"/></p>
-
+<c:set var="balance" value="12" />
 <form:form name="/addstops"  action="/addstops"   modelAttribute="route" method="POST" accept-charset="UTF-8" >
     <table class="routestops_table">
         <input type="hidden" name="stoplistsize" value="${stopList.size()}"/>
@@ -28,9 +28,10 @@
         <th> Stop Name </th>
         <c:forEach var="routeStop"  items="${stopList}">
         <tr>
-            <td><c:out value = "${routeStop.routeStopId}"/></td>
+            <td><c:out value = "${balance}"/></td>
             <td><input type='text' name='stopname/<c:out value = "${routeStop.routeStopId}"/>' id="'stopname/<c:out value = "${routeStop.routeStopId}"/>" /></td>
         </tr>
+            <c:set var="balance" value="${balance+1}" />
     </c:forEach>
     </table>
     <span>
