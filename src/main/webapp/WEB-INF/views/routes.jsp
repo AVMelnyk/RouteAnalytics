@@ -40,7 +40,7 @@
         <c:forEach var="route"  items="${routeList}">
             <tr>
                 <td><c:out value = "${route.routeNumber}"/></td>
-                <td><a href="<c:out value = "route/${route.id}"/>"><c:out value = "${route.routeName}"/></a></td>
+                <td><a href="<c:url value = "route/${route.id}"/>"><c:out value = "${route.routeName}"/></a></td>
                 <td><a href="<c:url value='/editroute/${route.id}' />" >Edit</a></td>
                 <td><a href="<c:url value='/remove/${route.id}' />" >Delete</a></td>
             </tr>

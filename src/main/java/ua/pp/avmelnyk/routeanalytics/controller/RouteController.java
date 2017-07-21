@@ -64,7 +64,11 @@ public class RouteController {
 
     @RequestMapping(value = "/route/{id}", method = RequestMethod.GET)
     public  String getRoute(@PathVariable("id") int route_id, Model model) {
-        model.addAttribute(routeService.getRouteById(route_id));
+        Route route = routeService.getRouteById(route_id);
+        List<RouteStop>routeStopList = route.getRouteStops();
+        model.addAttribute(routeStopList);
+        model.addAttribute(route);
+
         return "route";
     }
 

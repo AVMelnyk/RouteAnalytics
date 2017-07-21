@@ -6,6 +6,7 @@
 <html>
 <head>
     <title>Route Analytics</title>
+    <link rel="stylesheet" href="../../css/routepage_style.css" />
     <link rel="stylesheet" href="../../css/editroute_style.css" />
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
@@ -16,7 +17,14 @@
         <li><a href="/register">Register</a></li>
         <li><a href="/contacts">Contacts</a></li>
     </ul>
-    <p><c:out value = "${route.routeNumber}"/></p>
-    <p><c:out value = "${route.routeName}"/></p>
+
+    <div class="route_info">
+        <p>Route Number: <c:out value = "${route.routeNumber}"/></p>
+        <p>Route Name:  <c:out value = "${route.routeName}"/></p>
+        <a href="/addstop" class="button">add new Stop</a>
+        <c:forEach var="routeStop"  items="${routeStopList}">
+            <p>Stop Name: <c:out value="${routeStop.routeStopName}"/></p>
+        </c:forEach>
+    </div>
 </body>
 </html>
