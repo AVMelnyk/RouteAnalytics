@@ -30,6 +30,7 @@ public class RouteController {
         List<Route> routeList = routeService.getAllRoutes();
         model.addAttribute(routeList);
     }
+
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegistrationForm() {
         return "register";
@@ -49,11 +50,6 @@ public class RouteController {
         Route route = new Route();
         model.addAttribute("route", route);
         return "addroute";
-    }
-
-    @RequestMapping(value = "/editroute", method = RequestMethod.GET)
-    public String showEditRouteform(){
-        return "editroute";
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
@@ -81,7 +77,6 @@ public class RouteController {
         return "addroutestop";
     }
 
-
     @RequestMapping(value = "/addroutestop/{id}", method = RequestMethod.POST)
     public String processingAddRouteWithStops(@PathVariable("id") int route_id, @ModelAttribute ("routeStop") RouteStop stop ){
         Route route = routeService.getRouteById(route_id);
@@ -91,19 +86,26 @@ public class RouteController {
         return "redirect:/route/"+route_id;
     }
 
-    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
-    public String removeRoute(@PathVariable("id") int id){
-        routeService.removeRoute(id);
-        return "redirect:/routes";
+    @RequestMapping(value = "/editroute", method = RequestMethod.GET)
+    public String showEditRouteform(){
+        return "editroute";
     }
+
     @RequestMapping(value = "/editroute/{id}", method = RequestMethod.GET)
     public String editRoute(@PathVariable("id") int id, Model model){
         model.addAttribute("route", routeService.getRouteById(id));
         return "editroute";
     }
+
     @RequestMapping(value="/editroute/{id}", method = RequestMethod.POST)
     public String editRoutePost(@PathVariable("id") int id, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
         routeService.updateRoute(new Route(id, routeNumber,routeName));
+        return "redirect:/routes";
+    }
+
+    @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+    public String removeRoute(@PathVariable("id") int id){
+        routeService.removeRoute(id);
         return "redirect:/routes";
     }
 
