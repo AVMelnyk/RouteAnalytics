@@ -1,5 +1,7 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -7,6 +9,8 @@ import javax.persistence.*;
 public class RouteStop {
 
     @Id
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     @Column(name = "routestop_id")
     private int routeStopId;
 
@@ -17,8 +21,7 @@ public class RouteStop {
     @JoinColumn(name = "ROUTE_ID")
     private Route route;
 
-    public RouteStop(int routeStopId, String routeStopName) {
-        this.routeStopId = routeStopId;
+    public RouteStop(String routeStopName) {
         this.routeStopName = routeStopName;
     }
 

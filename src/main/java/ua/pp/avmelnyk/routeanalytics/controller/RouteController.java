@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import ua.pp.avmelnyk.routeanalytics.dao.RouteStopService;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteStopServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
@@ -68,30 +69,26 @@ public class RouteController {
         List<RouteStop>routeStopList = route.getRouteStops();
         model.addAttribute(routeStopList);
         model.addAttribute(route);
-
         return "route";
     }
 
-    @RequestMapping(value = "/addroutestops", method = RequestMethod.GET)
-    public String addRouteWithStops(Model model){
-        return "addroutestops";
+    @RequestMapping(value = "/addroutestop/{id}", method = RequestMethod.GET)
+    public String addRouteWithStops(@PathVariable("id") int route_id, Model model){
+        Route route = routeService.getRouteById(route_id);
+        RouteStop routeStop = new RouteStop("");
+        model.addAttribute(route);
+        model.addAttribute(routeStop);
+        return "addroutestop";
     }
 
 
-    @RequestMapping(value = "/addstops", method = RequestMethod.POST)
-    public String processingAddRouteWithStops( @RequestParam("route_id") int RouteID, @RequestParam("stoplistsize") int listsize, WebRequest request){
-        Route route = routeService.getRouteById(RouteID);
-        List<RouteStop> stopList = new ArrayList<RouteStop>();
-        for (int i = 1; i <= listsize; i++ ){
-            RouteStop routeStop = new RouteStop(i,request.getParameter("stopname/"+i));
-            stopList.add(routeStop);
-            System.out.println(request.getParameter("stopname/"+i));
-        }
-        for (RouteStop stop: stopList) {
-            stop.setRoute(route);
-            routeStopService.updateRouteStop(stop);
-        }
-        return "redirect:/route";
+    @RequestMapping(value = "/addroutestop/{id}", method = RequestMethod.POST)
+    public String processingAddRouteWithStops(@PathVariable("id") int route_id, @ModelAttribute ("routeStop") RouteStop stop ){
+        Route route = routeService.getRouteById(route_id);
+        stop.setRoute(route);
+        route.getRouteStops().add(stop);
+        routeService.updateRoute(route);
+        return "redirect:/route/"+route_id;
     }
 
     @RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)

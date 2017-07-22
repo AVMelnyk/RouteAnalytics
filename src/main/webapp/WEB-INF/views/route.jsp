@@ -6,24 +6,41 @@
 <html>
 <head>
     <title>Route Analytics</title>
-    <link rel="stylesheet" href="../../css/routepage_style.css" />
     <link rel="stylesheet" href="../../css/editroute_style.css" />
+    <link rel="stylesheet" href="../../css/routepage_style.css" />
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <ul>
-        <li><a href="/">Route Analytics</a></li>
-        <li><a href="/routes">Routes</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/contacts">Contacts</a></li>
-    </ul>
-
+<ul>
+    <li><a href="/">Route Analytics</a></li>
+    <li><a href="/routes">Routes</a></li>
+    <li><a href="/contacts">Contacts</a></li>
+    <c:choose>
+        <c:when test="${pageContext.request.userPrincipal.authenticated}">
+            <li>
+                <form action="/logout" id="logout" method="post">
+                    <input type="hidden" name="${_csrf.parameterName}"
+                           value="${_csrf.token}" />
+                    <button type="submit" name=submit" value="logout" class="btn-link">Log out</button>
+                </form>
+            </li>
+        </c:when>
+        <c:otherwise>
+            <li><a href="/login">Log in</a></li>
+        </c:otherwise>
+    </c:choose>
+</ul>
     <div class="route_info">
-        <p>Route Number: <c:out value = "${route.routeNumber}"/></p>
-        <p>Route Name:  <c:out value = "${route.routeName}"/></p>
-        <a href="/addstop" class="button">add new Stop</a>
+        <div class="route_info"><span>Route Number: <c:out value = "${route.routeNumber}"/></span></div>
+        <div class="route_info"><span>Route Name:  <c:out value = "${route.routeName}"/></span></div>
+        <a href="/addroutestop/${route.id}" class="button">add new Stop</a>
+        <c:set var="seq_id" value="1" />
         <c:forEach var="routeStop"  items="${routeStopList}">
-            <p>Stop Name: <c:out value="${routeStop.routeStopName}"/></p>
+
+            <span>Stop Number: <c:out value = "${seq_id}"/></span>
+            <span>Stop Name: <c:out value="${routeStop.routeStopName}"/></span>
+            <br>
+            <c:set var="seq_id" value="${seq_id+1}" />
         </c:forEach>
     </div>
 </body>

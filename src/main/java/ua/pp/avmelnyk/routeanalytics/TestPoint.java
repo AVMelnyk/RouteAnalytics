@@ -17,7 +17,7 @@ public class TestPoint {
         RouteService routeService = new RouteServiceImpl();
         Route route = routeService.getRouteById(4);
         RouteStopService routeStopService = new RouteStopServiceImpl();
-        RouteStop routeStop = new RouteStop(12, "23dasf");
+        RouteStop routeStop = new RouteStop( "23dasf");
         routeStop.setRoute(route);
         routeStopService.addRouteStop(routeStop);
 
