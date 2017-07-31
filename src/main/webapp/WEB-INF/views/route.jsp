@@ -35,19 +35,19 @@
         <div class="route_info"><span>Route Number: <c:out value = "${route.routeNumber}"/></span></div>
         <div class="route_info"><span>Route Name:  <c:out value = "${route.routeName}"/></span></div>
         <a href="/addroutestop/${route.id}" class="button">add new Stop</a>
-        <c:if test="${routeStopList.size()>0}">
+        <c:if test="${route.routeStops.size()>0}">
         <table>
             <th>Stop Number </th>
             <th>Stop Name</th>
             <th>Edit</th>
             <th>Delete</th>
-            <c:forEach var="routeStop"  items="${routeStopList}">
+            <c:forEach var="routeStop"  items="${route.routeStops}">
                 <div class="routestop_info">
                     <tr>
                         <td><c:out value = "${seq_id}"/></td>
                         <td><c:out value="${routeStop.routeStopName}"/></td>
                         <td><a href="<c:url value='/editroute/${routeStop.routeStopId}'/>">Edit</a></td>
-                        <td><a href="<c:url value='/remove/${routeStop.routeStopId}'/>">Delete</a></td>
+                        <td><a href="<c:url value='/remove/route/${route.id}/route_stop/${routeStop.routeStopId}'/>">Delete</a></td>
                     </tr>
                 </div>
                 <c:set var="seq_id" value="${seq_id+1}" />

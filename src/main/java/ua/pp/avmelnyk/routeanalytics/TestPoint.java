@@ -14,12 +14,6 @@ import java.util.List;
 public class TestPoint {
 
     public static void main(String[]  args) {
-        RouteService routeService = new RouteServiceImpl();
-        Route route = routeService.getRouteById(4);
-        RouteStopService routeStopService = new RouteStopServiceImpl();
-        RouteStop routeStop = new RouteStop( "23dasf");
-        routeStop.setRoute(route);
-        routeStopService.addRouteStop(routeStop);
 
     }
 

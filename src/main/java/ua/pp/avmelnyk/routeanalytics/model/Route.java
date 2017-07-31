@@ -9,6 +9,7 @@ import java.util.Set;
 @Entity
 @Table(name = ("ROUTES"))
 public class Route {
+
     @Id
     @GenericGenerator(name="kaugen" , strategy="increment")
     @GeneratedValue(generator="kaugen")
@@ -19,7 +20,7 @@ public class Route {
     @Column(name = ("ROUTENAME"))
     private String routeName;
 
-    @OneToMany(mappedBy = "route", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<RouteStop> routeStops;
 
     public Route() {
@@ -65,8 +66,12 @@ public class Route {
         return (List<RouteStop>) routeStops;
     }
 
-    public void setRouteStops(List<RouteStop> routeStops) {
-        this.routeStops = routeStops;
+    public void setRouteStops(List<RouteStop>routeStopsList) {
+        if (this.routeStops!= null )
+            {
+                this.routeStops.clear();
+                this.routeStops.addAll(routeStopsList);
+            }
     }
 
     @Override

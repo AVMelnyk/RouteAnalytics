@@ -53,17 +53,15 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroute", method = RequestMethod.POST)
-    public String addRoute(Model model, @ModelAttribute ("route") Route route ){
-        model.addAttribute("route", route);
+    public String addRoute(@ModelAttribute("route")Route route ){
         routeService.addRoute(route);
         return "redirect:/route/"+route.getId();
     }
 
     @RequestMapping(value = "/route/{id}", method = RequestMethod.GET)
-    public  String getRoute(@PathVariable("id") int route_id, Model model) {
+    public  String getRoute(@PathVariable("id")int route_id, Model model) {
         Route route = routeService.getRouteById(route_id);
-        List<RouteStop>routeStopList = route.getRouteStops();
-        model.addAttribute(routeStopList);
+        System.out.println(route);
         model.addAttribute(route);
         return "route";
     }
@@ -81,7 +79,14 @@ public class RouteController {
     public String processingAddRouteWithStops(@PathVariable("id") int route_id, @ModelAttribute ("routeStop") RouteStop stop ){
         Route route = routeService.getRouteById(route_id);
         stop.setRoute(route);
-        route.getRouteStops().add(stop);
+        if (route.getRouteStops()!= null){
+            route.getRouteStops().add(stop);
+        }
+        else {
+            List<RouteStop> routeStopList = new ArrayList<RouteStop>();
+            routeStopList.add(stop);
+            route.setRouteStops(routeStopList);
+        }
         routeService.updateRoute(route);
         return "redirect:/route/"+route_id;
     }
@@ -99,7 +104,15 @@ public class RouteController {
 
     @RequestMapping(value="/editroute/{id}", method = RequestMethod.POST)
     public String editRoutePost(@PathVariable("id") int id, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
-        routeService.updateRoute(new Route(id, routeNumber,routeName));
+        Route route = routeService.getRouteById(id);
+        Route updatedRoute = new Route(id, routeNumber,routeName);
+        List<RouteStop> updatedStopList = new ArrayList<RouteStop>();
+        for (RouteStop stop: route.getRouteStops()) {
+            stop.setRoute(updatedRoute);
+            updatedStopList.add(stop);
+        }
+        updatedRoute.setRouteStops(updatedStopList);
+        routeService.updateRoute(updatedRoute);
         return "redirect:/routes";
     }
 
@@ -112,5 +125,21 @@ public class RouteController {
     @RequestMapping(value = "/contacts", method = RequestMethod.GET)
     public String showcontacts() {
         return "contacts";
+    }
+
+    @RequestMapping(value = "/remove/route/{route_id}/route_stop/{stop_id}")
+    public String removeRouteStop(@PathVariable("route_id") int route_id, @PathVariable("stop_id") int stop_id ){
+        Route route = routeService.getRouteById(route_id);
+        List<RouteStop> stopList = route.getRouteStops();
+        List<RouteStop> newStopList = new ArrayList<RouteStop>();
+        for (RouteStop stop: stopList) {
+            if (stop_id != stop.getRouteStopId()){
+                newStopList.add(stop);
+            }
+        }
+        System.out.println(newStopList.toString());
+        route.setRouteStops(newStopList);
+        routeService.updateRoute(route);
+        return "redirect:/route/" + route_id;
     }
 }
