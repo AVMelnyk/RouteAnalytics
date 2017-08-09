@@ -16,20 +16,14 @@
     <li><a href="/register">Register</a></li>
     <li><a href="/contacts">Contacts</a></li>
 </ul>
-<form:form name="editroute"   method="POST" accept-charset="UTF-8" >
-    <table>
-        <tr>
-            <td>Route Number:</td>
-            <td><input type='text' name='routenumber' value="<c:out value = "${route.routeNumber}"/>"/></td>
-        </tr>
-        <tr>
-            <td>Route Name: </td>
-            <td><input type="text" name="routename" value="<c:out value = "${route.routeName}"/>"></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input type="submit" value="edit route" class="btn"></td>
-        </tr>
-    </table>
+<form:form name="editroute" modelAttribute="route"  method="POST" accept-charset="UTF-8" >
+    <form:label path="routeNumber">Route Number</form:label>
+    <form:input path="routeNumber" value="${route.routeNumber}" ></form:input>
+    <form:label path="routeName">Route Name</form:label>
+    <form:input path="routeName" value="${route.routeName}"></form:input>
+    <tr>
+        <td colspan="2"><input type="submit" value="edit route" class="btn"></td>
+    </tr>
 </form:form>
 </body>
 </html>

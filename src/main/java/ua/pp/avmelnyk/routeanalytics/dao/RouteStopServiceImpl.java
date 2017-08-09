@@ -36,7 +36,7 @@ public class RouteStopServiceImpl implements RouteStopService {
        return routeStopDAO.getRouteStopById(id);
     }
 
-    public void removeRouteStop(int id) {
-        routeStopDAO.removeRouteStop(id);
+    public void removeRouteStop(RouteStop routeStop) {
+        routeStopDAO.removeRouteStop(routeStop);
     }
 }

@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 public class RouteController {
 
+
     private RouteServiceImpl routeService;
     private RouteStopServiceImpl routeStopService;
 
@@ -76,18 +77,11 @@ public class RouteController {
     }
 
     @RequestMapping(value = "/addroutestop/{id}", method = RequestMethod.POST)
-    public String processingAddRouteWithStops(@PathVariable("id") int route_id, @ModelAttribute ("routeStop") RouteStop stop ){
+    public String processingAddRouteWithStops(@PathVariable("id") int route_id, @ModelAttribute("routeStop") RouteStop stop ){
         Route route = routeService.getRouteById(route_id);
+        route.getRouteStops().add(stop);
         stop.setRoute(route);
-        if (route.getRouteStops()!= null){
-            route.getRouteStops().add(stop);
-        }
-        else {
-            List<RouteStop> routeStopList = new ArrayList<RouteStop>();
-            routeStopList.add(stop);
-            route.setRouteStops(routeStopList);
-        }
-        routeService.updateRoute(route);
+        routeStopService.addRouteStop(stop);
         return "redirect:/route/"+route_id;
     }
 
@@ -103,16 +97,8 @@ public class RouteController {
     }
 
     @RequestMapping(value="/editroute/{id}", method = RequestMethod.POST)
-    public String editRoutePost(@PathVariable("id") int id, @RequestParam("routenumber") String routeNumber, @RequestParam("routename") String routeName){
-        Route route = routeService.getRouteById(id);
-        Route updatedRoute = new Route(id, routeNumber,routeName);
-        List<RouteStop> updatedStopList = new ArrayList<RouteStop>();
-        for (RouteStop stop: route.getRouteStops()) {
-            stop.setRoute(updatedRoute);
-            updatedStopList.add(stop);
-        }
-        updatedRoute.setRouteStops(updatedStopList);
-        routeService.updateRoute(updatedRoute);
+    public String editRoutePost(@ModelAttribute("route") Route route){
+        routeService.updateRoute(route);
         return "redirect:/routes";
     }
 
@@ -130,15 +116,9 @@ public class RouteController {
     @RequestMapping(value = "/remove/route/{route_id}/route_stop/{stop_id}")
     public String removeRouteStop(@PathVariable("route_id") int route_id, @PathVariable("stop_id") int stop_id ){
         Route route = routeService.getRouteById(route_id);
-        List<RouteStop> stopList = route.getRouteStops();
-        List<RouteStop> newStopList = new ArrayList<RouteStop>();
-        for (RouteStop stop: stopList) {
-            if (stop_id != stop.getRouteStopId()){
-                newStopList.add(stop);
-            }
-        }
-        System.out.println(newStopList.toString());
-        route.setRouteStops(newStopList);
+        RouteStop stop = routeStopService.getRouteStopById(stop_id);
+        route.getRouteStops().remove(stop);
+        routeStopService.removeRouteStop(stop);
         routeService.updateRoute(route);
         return "redirect:/route/" + route_id;
     }

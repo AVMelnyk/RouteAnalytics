@@ -20,8 +20,8 @@ public class Route {
     @Column(name = ("ROUTENAME"))
     private String routeName;
 
-    @OneToMany(mappedBy = "route", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<RouteStop> routeStops;
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    private List<RouteStop> routeStops = new ArrayList<RouteStop>();
 
     public Route() {
     }
@@ -67,15 +67,26 @@ public class Route {
     }
 
     public void setRouteStops(List<RouteStop>routeStopsList) {
-        if (this.routeStops!= null )
-            {
-                this.routeStops.clear();
-                this.routeStops.addAll(routeStopsList);
-            }
+        this.routeStops.addAll(routeStopsList);
     }
 
     @Override
     public String toString(){
         return "id="+routeID+", routeNumber="+routeNumber+", RouteName="+routeName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Route)) return false;
+
+        Route route = (Route) o;
+
+        return routeID == route.routeID;
+    }
+
+    @Override
+    public int hashCode() {
+        return routeID;
     }
 }

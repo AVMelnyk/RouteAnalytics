@@ -4,6 +4,8 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
+import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
+
 import java.util.List;
 
 
@@ -28,11 +30,10 @@ public class RouteDAOImpl  implements RouteDAO {
     }
 
     public void updateRoute(Route route) {
-        Transaction transaction = session.beginTransaction();
-        Route merged;
-        merged = (Route) session.merge(route);
-        session.save(merged);
-        transaction.commit();
+        session.getTransaction().begin();
+        Route merged =(Route) session.merge(route);
+        session.saveOrUpdate(merged);
+        session.getTransaction().commit();
         System.out.println("Route updated successfully");
     }
 

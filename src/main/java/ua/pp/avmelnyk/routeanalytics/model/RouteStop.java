@@ -17,7 +17,7 @@ public class RouteStop {
     @Column(name = "ROUTESTOPNAME")
     private String routeStopName;
 
-    @ManyToOne
+    @ManyToOne(optional = false)
     @JoinColumn(name = "ROUTE_ID")
     private Route route;
 
@@ -59,5 +59,20 @@ public class RouteStop {
                 ", routeStopName='" + routeStopName + '\'' +
                 ", route=" + route +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RouteStop)) return false;
+
+        RouteStop stop = (RouteStop) o;
+
+        return getRouteStopId() == stop.getRouteStopId();
+    }
+
+    @Override
+    public int hashCode() {
+        return getRouteStopId();
     }
 }

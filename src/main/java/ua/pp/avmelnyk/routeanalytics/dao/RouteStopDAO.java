@@ -8,5 +8,5 @@ public interface RouteStopDAO {
     void updateRouteStop(RouteStop  routeStop);
     List<RouteStop> getAllRouteStops();
     RouteStop getRouteStopById(int id);
-    void removeRouteStop(int id);
+    void removeRouteStop(RouteStop routeStop);
 }

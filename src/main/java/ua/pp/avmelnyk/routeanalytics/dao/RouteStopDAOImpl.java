@@ -19,6 +19,7 @@ public class RouteStopDAOImpl implements RouteStopDAO{
         try {
             session.beginTransaction();
             session.save(routeStop);
+            session.flush();
             session.getTransaction().commit();
             System.out.println("RouteStop added successfully "+routeStop.toString());
         }
@@ -52,20 +53,33 @@ public class RouteStopDAOImpl implements RouteStopDAO{
     }
 
     public RouteStop getRouteStopById(int id) {
-        Transaction transaction = session.beginTransaction();
-        RouteStop routeStop = (RouteStop) session.load(RouteStop.class, id);
-        transaction.commit();
-        System.out.println("RouteStop loaded successfully");
+        RouteStop routeStop;
+       try{
+           session.getTransaction().begin();
+           routeStop = (RouteStop) session.load(RouteStop.class, id);
+           session.getTransaction().commit();
+           System.out.println("RouteStop loaded successfully");
+       }
+       catch (RuntimeException e){
+           session.getTransaction().rollback();
+           throw e;
+       }
+
         return routeStop;
     }
 
-    public void removeRouteStop(int id) {
-        Transaction transaction = session.beginTransaction();
-        RouteStop routeStop = (RouteStop) session.load(RouteStop.class, id);
-        if(null != routeStop){
-            session.delete(routeStop);
-            System.out.println("RouteStop removed successfully");
+    public void removeRouteStop(RouteStop routeStop) {
+        try {
+            session.getTransaction().begin();
+                session.delete(routeStop);
+                session.flush();
+                System.out.println("RouteStop removed successfully");
+            session.getTransaction().commit();
         }
-        transaction.commit();
+        catch (RuntimeException e){
+            session.getTransaction().rollback();
+            throw e;
+        }
+
     }
 }
