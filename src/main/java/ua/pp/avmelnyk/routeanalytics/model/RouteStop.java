@@ -1,7 +1,6 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
 import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 
 @Entity

@@ -46,7 +46,7 @@
                     <tr>
                         <td><c:out value = "${seq_id}"/></td>
                         <td><c:out value="${routeStop.routeStopName}"/></td>
-                        <td><a href="<c:url value='/editroute/${routeStop.routeStopId}'/>">Edit</a></td>
+                        <td><a href="<c:url value='/editroutestop/${routeStop.routeStopId}'/>">Edit</a></td>
                         <td><a href="<c:url value='/remove/route/${route.id}/route_stop/${routeStop.routeStopId}'/>">Delete</a></td>
                     </tr>
                 </div>

@@ -5,6 +5,7 @@ body{
     background-repeat: no-repeat;
 }
 table{
+    font-size: 22px;
     border-collapse: collapse;
     border: 2px black solid;
     margin-left:auto;

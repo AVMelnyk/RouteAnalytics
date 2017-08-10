@@ -1,21 +1,18 @@
 package ua.pp.avmelnyk.routeanalytics.controller;
 
+import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
-import ua.pp.avmelnyk.routeanalytics.dao.RouteStopService;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteStopServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
 import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class RouteController {
-
 
     private RouteServiceImpl routeService;
     private RouteStopServiceImpl routeStopService;
@@ -113,7 +110,7 @@ public class RouteController {
         return "contacts";
     }
 
-    @RequestMapping(value = "/remove/route/{route_id}/route_stop/{stop_id}")
+    @RequestMapping(value = "/remove/route/{route_id}/route_stop/{stop_id}", method = RequestMethod.GET)
     public String removeRouteStop(@PathVariable("route_id") int route_id, @PathVariable("stop_id") int stop_id ){
         Route route = routeService.getRouteById(route_id);
         RouteStop stop = routeStopService.getRouteStopById(stop_id);
@@ -121,5 +118,11 @@ public class RouteController {
         routeStopService.removeRouteStop(stop);
         routeService.updateRoute(route);
         return "redirect:/route/" + route_id;
+    }
+    @RequestMapping(value = "/editroutestop/{routeStop.routeStopId}", method = RequestMethod.GET)
+    public String editRouteStop(@PathVariable("routeStop.routeStopId")int routeStopID, Model model ){
+        model.addAttribute("routestop", routeStopService.getRouteStopById(routeStopID));
+        return "editroutestop";
+
     }
 }
