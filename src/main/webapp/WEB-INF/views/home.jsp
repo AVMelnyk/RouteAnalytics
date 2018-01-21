@@ -19,7 +19,7 @@
                         <li><a href="/routes">Routes</a></li>
                     </c:when>
                     <c:otherwise>
-                        <li><a href="/register">Register</a></li>
+                        <li><a href="/user/registration">Register</a></li>
                     </c:otherwise>
                 </c:choose>
             <li><a href="/contacts">Contacts</a></li>

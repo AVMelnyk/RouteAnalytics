@@ -2,6 +2,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Route Analytics</title>
@@ -42,8 +43,21 @@
     <h1>Registration form</h1>
 </div>
 <div class="registration_form">
-    <form method="POST">
-        <div class="registration_form label">
+    <form:form  name="registration" action="/user/registration"  modelAttribute="userDto" method="POST">
+        <form:label path="firstName">FirstName</form:label>
+        <form:input path="firstName" />
+        <form:label path="lastName">LastName</form:label>
+        <form:input path="lastName" />
+        <form:label path="email">Email</form:label>
+        <form:input path="email"/>
+        <form:label path="password">Password</form:label>
+        <form:input path="password"/>
+        <form:label path="matchingPassword">Confirm Password</form:label>
+        <form:input path="matchingPassword"/>
+        <input class="input submit" type="submit" value="Register" />
+        <input type="hidden" name="${_csrf.parameterName}"
+               value="${_csrf.token}" />
+       <%-- <div class="registration_form label">
             <label for="firstname">First Name</label>
         </div>
         <div class="registration_form input">
@@ -69,8 +83,8 @@
         </div>
         <input  class="input submit" type="submit" value="Register" />
         <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}" />
-    </form>
+               value="${_csrf.token}" />--%>
+    </form:form>
 </div>
 </body>
 </html>
