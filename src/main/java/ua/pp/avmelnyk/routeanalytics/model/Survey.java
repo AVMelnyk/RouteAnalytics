@@ -78,4 +78,32 @@ public class Survey {
     public void setRoutes(Set<Route> routes) {
         this.routes = routes;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Survey survey = (Survey) o;
+
+        return getID() == survey.getID();
+    }
+
+    @Override
+    public int hashCode() {
+        return (int) (getID() ^ (getID() >>> 32));
+    }
+
+    @Override
+    public String toString() {
+        return "Survey{" +
+                "ID=" + ID +
+                ", Name='" + Name + '\'' +
+                ", Manager=" + Manager +
+                ", start=" + start +
+                ", end=" + end +
+                ", observers=" + observers +
+                ", routes=" + routes +
+                '}';
+    }
 }
