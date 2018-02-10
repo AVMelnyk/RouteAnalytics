@@ -43,47 +43,25 @@
     <h1>Registration form</h1>
 </div>
 <div class="registration_form">
-    <form:form  name="registration" action="/user/registration"  modelAttribute="userDto" method="POST">
+    <form:form  name="registration" action="/user/registration"  modelAttribute="userDto" acceptCharset="UTF-8" method="POST">
         <form:label path="firstName">FirstName</form:label>
+        <form:errors path="firstName" />
         <form:input path="firstName" />
         <form:label path="lastName">LastName</form:label>
+        <form:errors path="lastName" />
         <form:input path="lastName" />
         <form:label path="email">Email</form:label>
+        <form:errors path="email" />
         <form:input path="email"/>
         <form:label path="password">Password</form:label>
-        <form:input path="password"/>
+        <form:errors path="password" />
+        <form:password path="password"/>
         <form:label path="matchingPassword">Confirm Password</form:label>
-        <form:input path="matchingPassword"/>
+        <form:errors path="matchingPassword" />
+        <form:password  path="matchingPassword"/>
         <input class="input submit" type="submit" value="Register" />
         <input type="hidden" name="${_csrf.parameterName}"
                value="${_csrf.token}" />
-       <%-- <div class="registration_form label">
-            <label for="firstname">First Name</label>
-        </div>
-        <div class="registration_form input">
-            <input type="text" id="firstname" autofocus>
-        </div>
-        <div class="registration_form label">
-            <label for="lastname">Last Name</label>
-        </div>
-        <div class="registration_form input">
-            <input type="text" id="lastname" >
-        </div>
-        <div class="registration_form label">
-            <label for="username">Username</label>
-        </div>
-        <div class="registration_form input">
-            <input type="text" id="username" >
-        </div>
-        <div class="registration_form label">
-            <label for="password">Password</label>
-        </div>
-        <div class="registration_form input">
-            <input type="password" id="password">
-        </div>
-        <input  class="input submit" type="submit" value="Register" />
-        <input type="hidden" name="${_csrf.parameterName}"
-               value="${_csrf.token}" />--%>
     </form:form>
 </div>
 </body>

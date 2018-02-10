@@ -1,16 +1,31 @@
 package ua.pp.avmelnyk.routeanalytics.web.dto;
 
+import ua.pp.avmelnyk.routeanalytics.validation.ValidEmail;
+import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+@Entity
 public class UserDto {
+
     @NotNull
+    @Size(min=1, max=16)
     private String firstName;
+
     @NotNull
+    @Size(min=1, max=16)
     private String lastName;
+
+    @ValidEmail
     @NotNull
     private String email;
+
     @NotNull
+    @Size(min=5, max=16)
     private String password;
+
+    @NotNull
+    @Size(min=5, max=16)
     private String matchingPassword;
 
     public String getFirstName() {
