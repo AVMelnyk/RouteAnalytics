@@ -1,10 +1,12 @@
 package ua.pp.avmelnyk.routeanalytics.web.dto;
 
+import ua.pp.avmelnyk.routeanalytics.validation.PasswordMatches;
 import ua.pp.avmelnyk.routeanalytics.validation.ValidEmail;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@PasswordMatches
 @Entity
 public class UserDto {
 
