@@ -1,6 +1,7 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class Route {
     @Column(name = ("ROUTENAME"))
     private String routeName;
 
-    @OneToMany(mappedBy = "route", cascade = {CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "route", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<RouteStop> routeStops = new ArrayList<RouteStop>();
 
     public Route() {

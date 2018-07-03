@@ -4,7 +4,6 @@ import ua.pp.avmelnyk.routeanalytics.model.Route;
 import java.util.List;
 
 public interface RouteDAO {
-
     void addRoute(Route route);
     void updateRoute(Route route);
     List<Route> getAllRoutes();

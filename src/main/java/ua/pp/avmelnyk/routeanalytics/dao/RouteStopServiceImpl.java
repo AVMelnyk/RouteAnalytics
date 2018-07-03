@@ -1,41 +1,40 @@
 package ua.pp.avmelnyk.routeanalytics.dao;
 
-import org.hibernate.Session;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
-import ua.pp.avmelnyk.routeanalytics.persistence.HibernateUtil;
 
 import java.util.List;
 
 @Service
+
 public class RouteStopServiceImpl implements RouteStopService {
+
     private  RouteStopDAO routeStopDAO;
 
-    public RouteStopServiceImpl() {
-        setRouteDAO();
+    @Autowired
+    public RouteStopServiceImpl(RouteStopDAO routeStopDAO) {
+        this.routeStopDAO = routeStopDAO;
     }
 
-    private void setRouteDAO() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        this.routeStopDAO  = new RouteStopDAOImpl(session);
-
-    }
+    @Transactional
     public void addRouteStop(RouteStop routeStop) {
         routeStopDAO.addRouteStop(routeStop);
     }
-
+    @Transactional
     public void updateRouteStop(RouteStop routeStop) {
         routeStopDAO.updateRouteStop(routeStop);
     }
-
+    @Transactional
     public List<RouteStop> getAllRouteStops() {
          return  routeStopDAO.getAllRouteStops();
     }
-
+    @Transactional
     public RouteStop getRouteStopById(int id) {
        return routeStopDAO.getRouteStopById(id);
     }
-
+    @Transactional
     public void removeRouteStop(RouteStop routeStop) {
         routeStopDAO.removeRouteStop(routeStop);
     }

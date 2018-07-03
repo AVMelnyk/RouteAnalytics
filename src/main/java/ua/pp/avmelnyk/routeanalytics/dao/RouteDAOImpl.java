@@ -1,73 +1,55 @@
 package ua.pp.avmelnyk.routeanalytics.dao;
 
-import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
-import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
 
 import java.util.List;
 
-
+@Repository
 public class RouteDAOImpl  implements RouteDAO {
 
-    private Session session;
+    private  SessionFactory sessionFactory;
 
-    public RouteDAOImpl(Session session) {
-        this.session = session;
+    @Autowired
+    public RouteDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    private Session getCurrentSession(){
+        return this.sessionFactory.getCurrentSession();
     }
 
     public void addRoute(Route route) {
-        try {
-            session.beginTransaction();
-            session.save(route);
-            session.getTransaction().commit();
-        }
-        catch (RuntimeException e) {
-            session.getTransaction().rollback();
-        }
+        getCurrentSession().persist(route);
         System.out.println("Route added successfully "+route.toString());
     }
 
     public void updateRoute(Route route) {
-        session.getTransaction().begin();
-        Route merged =(Route) session.merge(route);
-        session.saveOrUpdate(merged);
-        session.getTransaction().commit();
+        getCurrentSession().saveOrUpdate(route);
         System.out.println("Route updated successfully");
     }
 
     @SuppressWarnings("unchecked")
     public List<Route> getAllRoutes() {
         List<Route> routes;
-        try {
-            Transaction transaction = session.beginTransaction();
-            routes = session.createCriteria(Route.class).list();
-            transaction.commit();
-        }
-        catch (RuntimeException e) {
-            session.getTransaction().rollback();
-            throw e;
-        }
+        routes = getCurrentSession().createCriteria(Route.class).list();
         return routes;
-
     }
 
     public Route getRouteById(int id) {
-        Transaction transaction = session.beginTransaction();
-        Route route = (Route) session.load(Route.class, id);
-        transaction.commit();
+        Route route = (Route) getCurrentSession().load(Route.class, id);
         System.out.println("Route loaded successfully");
         return route;
     }
 
     public void removeRoute(int id) {
-        Transaction transaction = session.beginTransaction();
-        Route route = (Route) session.load(Route.class, id);
+        Route route = (Route) getCurrentSession().load(Route.class, id);
         if(null != route){
-            session.delete(route);
+            getCurrentSession().delete(route);
             System.out.println("Route removed successfully");
         }
-        transaction.commit();
     }
 }

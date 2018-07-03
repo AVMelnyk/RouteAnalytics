@@ -1,6 +1,7 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
 import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 
 @Entity
@@ -16,7 +17,7 @@ public class RouteStop {
     @Column(name = "ROUTESTOPNAME")
     private String routeStopName;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @JoinColumn(name = "ROUTE_ID")
     private Route route;
 

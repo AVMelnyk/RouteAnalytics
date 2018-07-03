@@ -1,24 +1,28 @@
 package ua.pp.avmelnyk.routeanalytics.controller;
 
-import com.sun.org.apache.regexp.internal.RE;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
-import ua.pp.avmelnyk.routeanalytics.dao.RouteStopServiceImpl;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import ua.pp.avmelnyk.routeanalytics.dao.RouteService;
+import ua.pp.avmelnyk.routeanalytics.dao.RouteStopService;
 import ua.pp.avmelnyk.routeanalytics.model.Route;
-import ua.pp.avmelnyk.routeanalytics.dao.RouteServiceImpl;
 import ua.pp.avmelnyk.routeanalytics.model.RouteStop;
+
 import java.util.List;
 
 @Controller
 public class RouteController {
 
-    private RouteServiceImpl routeService;
-    private RouteStopServiceImpl routeStopService;
+    private RouteService routeService;
+    private RouteStopService routeStopService;
 
     @Autowired
-    public RouteController(RouteServiceImpl routeService, RouteStopServiceImpl routeStopService) {
+    public RouteController(RouteService routeService, RouteStopService routeStopService) {
         this.routeService = routeService;
         this.routeStopService = routeStopService;
     }
@@ -101,7 +105,6 @@ public class RouteController {
         Route route = routeService.getRouteById(route_id);
         RouteStop stop = routeStopService.getRouteStopById(stop_id);
         route.getRouteStops().remove(stop);
-        routeStopService.removeRouteStop(stop);
         routeService.updateRoute(route);
         return "redirect:/route/" + route_id;
     }
