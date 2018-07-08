@@ -19,7 +19,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({"ua"})
-@PropertySource({"classpath:persistence-postgresql.properties"})
+@PropertySource({"classpath:local_persistence_postgresql.properties"})
 public class DataSourceConfiguration {
 
     final
@@ -68,7 +68,9 @@ public class DataSourceConfiguration {
             {
                 setProperty("hibernate.dialect",
                         environment.getProperty("hibernate.dialect"));
+                setProperty("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
                 setProperty("hibernate.enable_lazy_load_no_trans" , "true");
+
             }
         };
     }

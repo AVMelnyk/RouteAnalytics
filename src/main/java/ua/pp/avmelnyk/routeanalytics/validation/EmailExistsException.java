@@ -2,9 +2,9 @@ package ua.pp.avmelnyk.routeanalytics.validation;
 
 
 @SuppressWarnings("serial")
-public class EmailExistException extends Throwable {
+public class EmailExistsException extends Throwable {
 
-    public EmailExistException(final String message) {
+    public EmailExistsException(final String message) {
         super(message);
     }
 

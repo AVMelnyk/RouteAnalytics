@@ -1,11 +1,21 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.List;
 
+@Entity
+@Table(name = ("USERS"))
 public class User {
 
+    @Id
+    @GenericGenerator(name="kaugen" , strategy="increment")
+    @GeneratedValue(generator="kaugen")
     private Long userID;
 
     @NotNull
@@ -27,7 +37,7 @@ public class User {
     @NotNull
     private String email;
 
-    private List<Route> routeList;
+    //private List<Route> routeList;
 
     public User(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
@@ -35,6 +45,9 @@ public class User {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    public User() {
     }
 
     public Long getID() {
@@ -85,13 +98,13 @@ public class User {
         this.email = email;
     }
 
-    public List<Route> getRouteList() {
-        return routeList;
-    }
-
-    public void setRouteList(List<Route> routeList) {
-        this.routeList = routeList;
-    }
+//    public List<Route> getRouteList() {
+//        return routeList;
+//    }
+//
+//    public void setRouteList(List<Route> routeList) {
+//        this.routeList = routeList;
+//    }
 
     @Override
     public String toString() {
@@ -102,7 +115,7 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", routeList=" + routeList +
+               // ", routeList=" + routeList +
                 '}';
     }
 }
