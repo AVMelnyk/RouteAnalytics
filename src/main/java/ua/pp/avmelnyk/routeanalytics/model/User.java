@@ -1,21 +1,16 @@
 package ua.pp.avmelnyk.routeanalytics.model;
 
-import org.hibernate.annotations.GenericGenerator;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+
 @Entity
 @Table(name = ("USERS"))
-public class User {
+public class User implements java.io.Serializable {
 
     @Id
-    @GenericGenerator(name="kaugen" , strategy="increment")
-    @GeneratedValue(generator="kaugen")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
 
     @NotNull
@@ -38,6 +33,8 @@ public class User {
     private String email;
 
     //private List<Route> routeList;
+
+
 
     public User(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
@@ -97,6 +94,7 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
+
 
 //    public List<Route> getRouteList() {
 //        return routeList;
