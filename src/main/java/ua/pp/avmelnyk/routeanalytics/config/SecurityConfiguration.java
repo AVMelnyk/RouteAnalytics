@@ -60,7 +60,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .failureUrl("/login?error").permitAll()
                 .and().logout().
                 logoutUrl("/logout").
-                logoutSuccessUrl("/");
+                logoutSuccessUrl("/")
+                .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 
     @Bean
