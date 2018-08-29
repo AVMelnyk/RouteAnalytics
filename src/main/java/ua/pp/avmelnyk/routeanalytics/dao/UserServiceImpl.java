@@ -34,11 +34,20 @@ public class UserServiceImpl implements UserService {
         return userDAO.save(user);
     }
 
-    private boolean emailExist(String email) {
+    @Transactional
+    public boolean emailExist(String email) {
         User user = userDAO.findByEmail(email);
         if (user != null) {
             return true;
         }
         return false;
     }
+
+    @Transactional
+    public User findByEmail(String email) {
+        return userDAO.findByEmail(email);
+    }
+
+
+
 }

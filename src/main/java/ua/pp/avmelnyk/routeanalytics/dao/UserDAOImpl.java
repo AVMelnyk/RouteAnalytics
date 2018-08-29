@@ -37,6 +37,7 @@ public class UserDAOImpl implements UserDAO {
        return  get(id);
 
     }
+
     public User get(Long id){
 
         return (User) getCurrentSession().load(User.class, id);
