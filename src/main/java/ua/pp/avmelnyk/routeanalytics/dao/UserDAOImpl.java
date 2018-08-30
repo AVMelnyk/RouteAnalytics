@@ -34,11 +34,11 @@ public class UserDAOImpl implements UserDAO {
     public User save(User user) {
 
       Long id = (Long)getCurrentSession().save(user);
-       return  get(id);
+       return  findByID(id);
 
     }
 
-    public User get(Long id){
+    public User findByID(Long id){
 
         return (User) getCurrentSession().load(User.class, id);
     }

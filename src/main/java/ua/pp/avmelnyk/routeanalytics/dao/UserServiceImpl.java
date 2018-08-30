@@ -37,10 +37,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public boolean emailExist(String email) {
         User user = userDAO.findByEmail(email);
-        if (user != null) {
-            return true;
-        }
-        return false;
+        return user != null;
     }
 
     @Transactional
@@ -48,6 +45,15 @@ public class UserServiceImpl implements UserService {
         return userDAO.findByEmail(email);
     }
 
+    @Transactional
+    public User save(User user) {
+        return  userDAO.save(user);
+    }
+    
+    @Transactional
+    public User findByID(Long id) {
+        return userDAO.findByID(id);
+    }
 
 
 }
