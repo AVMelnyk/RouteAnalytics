@@ -24,5 +24,6 @@ public class MyUserDetailsService implements UserDetailsService {
 
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         //User user = userService.findByEmail(email);
+        // Comment for Birthday commit
     }
 }
