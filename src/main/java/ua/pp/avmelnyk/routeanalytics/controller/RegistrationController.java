@@ -3,6 +3,7 @@ package ua.pp.avmelnyk.routeanalytics.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -62,5 +63,12 @@ public class RegistrationController {
             return null;
         }
         return registered;
+    }
+
+    @RequestMapping(value = "/Acces_Denied")
+    public String accessDeniedPage(ModelMap model){
+        model.addAttribute("user", "Username");
+        return "accessDenied";
+
     }
 }
