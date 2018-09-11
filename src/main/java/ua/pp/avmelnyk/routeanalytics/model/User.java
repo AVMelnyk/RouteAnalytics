@@ -32,6 +32,12 @@ public class User implements java.io.Serializable {
     @NotNull
     private String email;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "USERS_USER_PROFILE",
+            joinColumns = { @JoinColumn(name = "USER_ID") },
+            inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
+    private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+
     //private List<Route> routeList;
 
 

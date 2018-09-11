@@ -1,6 +1,7 @@
 package ua.pp.avmelnyk.routeanalytics.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -23,6 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 
     @Autowired
+    @Qualifier("myUserDetailsService")
     private UserDetailsService userDetailsService;
 
     @Bean
@@ -33,8 +35,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth)
-            throws Exception {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService);
     }
 
@@ -56,7 +57,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
                 .failureUrl("/login?error").permitAll()
                 .and().logout().
                 logoutUrl("/logout").
-                logoutSuccessUrl("/")
+                logoutSuccessUrl("/login")
                 .and().exceptionHandling().accessDeniedPage("/Access_Denied");
     }
 

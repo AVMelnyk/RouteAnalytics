@@ -65,10 +65,9 @@ public class RegistrationController {
         return registered;
     }
 
-    @RequestMapping(value = "/Acces_Denied")
+    @RequestMapping(value = "/Acces_Denied", method = RequestMethod.GET)
     public String accessDeniedPage(ModelMap model){
         model.addAttribute("user", "Username");
         return "accessDenied";
-
     }
 }
