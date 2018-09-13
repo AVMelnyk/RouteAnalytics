@@ -3,6 +3,8 @@ package ua.pp.avmelnyk.routeanalytics.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
@@ -109,6 +111,15 @@ public class User implements java.io.Serializable {
 //    public void setRouteList(List<Route> routeList) {
 //        this.routeList = routeList;
 //    }
+
+
+    public Set<UserProfile> getUserProfiles() {
+        return userProfiles;
+    }
+
+    public void setUserProfiles(Set<UserProfile> userProfiles) {
+        this.userProfiles = userProfiles;
+    }
 
     @Override
     public String toString() {
