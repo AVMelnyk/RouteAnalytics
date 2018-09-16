@@ -14,25 +14,22 @@ public class User implements java.io.Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userID;
-
     @NotNull
     @Size(min = 5, max = 16)
     private String username;
-
     @NotNull
     @Size(min=5, max=25)
     private String password;
-
     @NotNull
     @Size(min=2, max=30)
     private String firstName;
-
     @NotNull
     @Size(min=2, max=30)
     private String lastName;
-
     @NotNull
     private String email;
+    @NotNull
+    private String state  = State.ACTIVE.getState();
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USERS_USER_PROFILE",
