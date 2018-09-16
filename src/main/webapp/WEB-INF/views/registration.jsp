@@ -44,6 +44,9 @@
 </div>
 <div class="registration_form">
     <form:form  name="registration" action="/user/registration"  modelAttribute="userDto" acceptCharset="UTF-8" method="POST">
+        <form:label path="userName">username</form:label>
+        <form:errors path="userName" />
+        <form:input path="userName" />
         <form:label path="firstName">FirstName</form:label>
         <form:errors path="firstName" />
         <form:input path="firstName" />

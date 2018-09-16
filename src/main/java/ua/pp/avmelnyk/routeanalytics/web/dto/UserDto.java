@@ -2,13 +2,15 @@ package ua.pp.avmelnyk.routeanalytics.web.dto;
 
 import ua.pp.avmelnyk.routeanalytics.validation.PasswordMatches;
 import ua.pp.avmelnyk.routeanalytics.validation.ValidEmail;
-
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @PasswordMatches
-//@Entity
 public class UserDto {
+
+    @NotNull
+    @Size(min=1, max=16)
+    private String userName;
 
     @NotNull
     @Size(min=1, max=16)
@@ -29,6 +31,14 @@ public class UserDto {
     @NotNull
     @Size(min=5, max=16)
     private String matchingPassword;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName( String userName) {
+        this.userName = userName;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -70,6 +80,8 @@ public class UserDto {
         this.matchingPassword = matchingPassword;
     }
 
+
+
     @Override
     public String toString() {
         return "UserDto{" +
@@ -80,4 +92,6 @@ public class UserDto {
                 ", matchingPassword='" + matchingPassword + '\'' +
                 '}';
     }
+
+
 }

@@ -50,6 +50,7 @@ public class RegistrationController {
             return new ModelAndView("registration", "user", accountDto);
         }
         else {
+            User user = createUserAccount(accountDto,  bindingResult);
             return new ModelAndView("successRegister", "user", accountDto);
         }
     }
