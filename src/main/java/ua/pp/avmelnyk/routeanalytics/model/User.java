@@ -33,13 +33,9 @@ public class User implements java.io.Serializable {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "USERS_USER_PROFILE",
-            joinColumns = { @JoinColumn(name = "USER_ID") },
+            joinColumns = { @JoinColumn(name = "USERID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
     private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
-
-    //private List<Route> routeList;
-
-
 
     public User(String username, String password, String firstName, String lastName, String email) {
         this.username = username;
