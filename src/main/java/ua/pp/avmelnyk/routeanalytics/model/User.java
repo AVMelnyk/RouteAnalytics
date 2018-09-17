@@ -31,7 +31,7 @@ public class User implements java.io.Serializable {
     @NotNull
     private String state  = State.ACTIVE.getState();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "USERS_USER_PROFILE",
             joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
@@ -126,5 +126,6 @@ public class User implements java.io.Serializable {
                // ", routeList=" + routeList +
                 '}';
     }
+
 }
 
