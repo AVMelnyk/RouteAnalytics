@@ -12,6 +12,7 @@ import javax.persistence.Table;
 public class UserProfile {
 
     @Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "USER_PROFILE_ID" )
     private int id;
 
     @Column(name="TYPE", length=15, unique=true, nullable=false)

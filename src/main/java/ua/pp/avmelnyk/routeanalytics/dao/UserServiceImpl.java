@@ -4,8 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.pp.avmelnyk.routeanalytics.model.User;
+import ua.pp.avmelnyk.routeanalytics.model.UserProfile;
 import ua.pp.avmelnyk.routeanalytics.validation.EmailExistsException;
 import ua.pp.avmelnyk.routeanalytics.web.dto.UserDto;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,9 +36,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(accountDto.getPassword());
         user.setEmail(accountDto.getEmail());
         user.setUsername(accountDto.getUserName());
-        /*Set<UserProfile> userProfiles = new HashSet<UserProfile>();
+        Set<UserProfile> userProfiles = new HashSet<UserProfile>();
         userProfiles.add(new UserProfile());
-        user.setUserProfiles(userProfiles);*/
+        user.setUserProfiles(userProfiles);
         return userDAO.save(user);
     }
 

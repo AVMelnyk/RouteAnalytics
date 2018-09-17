@@ -13,6 +13,7 @@ public class User implements java.io.Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name ="USER_ID")
     private Long userID;
     @NotNull
     @Size(min = 5, max = 16)
@@ -31,9 +32,9 @@ public class User implements java.io.Serializable {
     @NotNull
     private String state  = State.ACTIVE.getState();
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "USERS_USER_PROFILE",
-            joinColumns = { @JoinColumn(name = "USERID") },
+            joinColumns = { @JoinColumn(name = "USER_ID") },
             inverseJoinColumns = { @JoinColumn(name = "USER_PROFILE_ID") })
     private Set<UserProfile> userProfiles = new HashSet<UserProfile>();
 
