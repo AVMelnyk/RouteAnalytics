@@ -1,6 +1,7 @@
 package ua.pp.avmelnyk.routeanalytics.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.pp.avmelnyk.routeanalytics.model.User;
@@ -16,10 +17,12 @@ public class UserServiceImpl implements UserService {
 
 
     private UserDAO userDAO;
+    private PasswordEncoder passwordEncoderencoder;
 
     @Autowired
-    public UserServiceImpl(UserDAO userDAO) {
+    public UserServiceImpl(UserDAO userDAO, PasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
+        this.passwordEncoderencoder = passwordEncoder;
     }
 
     @Transactional
@@ -33,7 +36,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setFirstName(accountDto.getFirstName());
         user.setLastName(accountDto.getLastName());
-        user.setPassword(accountDto.getPassword());
+        user.setPassword(passwordEncoderencoder.encode(accountDto.getPassword()));
         user.setEmail(accountDto.getEmail());
         user.setUsername(accountDto.getUserName());
         Set<UserProfile> userProfiles = new HashSet<UserProfile>();

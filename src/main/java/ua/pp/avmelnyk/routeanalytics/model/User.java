@@ -19,7 +19,6 @@ public class User implements java.io.Serializable {
     @Size(min = 5, max = 16)
     private String username;
     @NotNull
-    @Size(min=5, max=25)
     private String password;
     @NotNull
     @Size(min=2, max=30)
